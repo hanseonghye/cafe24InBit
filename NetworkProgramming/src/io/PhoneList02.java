@@ -21,7 +21,6 @@ public class PhoneList02 {
 				System.out.println(name + " : "+phone01+"-"+phone02+phone03);
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			if(scanner != null) {

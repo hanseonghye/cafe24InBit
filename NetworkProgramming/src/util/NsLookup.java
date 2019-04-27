@@ -35,12 +35,10 @@ public class NsLookup {
 					System.out.print("-->>");
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			try {
@@ -48,7 +46,6 @@ public class NsLookup {
 					br.close();
 				}
 			}catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
