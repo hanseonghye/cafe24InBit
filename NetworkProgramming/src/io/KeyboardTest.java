@@ -9,34 +9,34 @@ public class KeyboardTest {
 
 	public static void main(String[] args) {
 		BufferedReader br = null;
-		
+
 		try {
-			//기반 스트림
-			
-			//보조스트림1
+			// 기반 스트림
+
+			// 보조스트림1
 			// byte|byte|byte --> char
-			InputStreamReader isr = new InputStreamReader(System.in,"utf-8");
-			
-			//보조스트림2
-			// char|char|char|\n  -> char+char+char == string
+			InputStreamReader isr = new InputStreamReader(System.in, "utf-8");
+
+			// 보조스트림2
+			// char|char|char|\n -> char+char+char == string
 			br = new BufferedReader(isr);
-			
+
 			String line = null;
 			try {
-				while((line = br.readLine()) != null) {
-					if("exit".equals(line)) {
+				while ((line = br.readLine()) != null) {
+					if ("exit".equals(line)) {
 						break;
 					}
-					System.out.println(">> "+line);
+					System.out.println(">> " + line);
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if( br!= null) {
+				if (br != null) {
 					br.close();
 				}
 			} catch (IOException e) {
