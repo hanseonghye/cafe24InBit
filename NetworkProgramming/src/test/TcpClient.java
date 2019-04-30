@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 
 public class TcpClient {
 	private static final String SERVER_IP = "192.168.1.4";
@@ -12,11 +13,30 @@ public class TcpClient {
 	
 	public static void main(String[] args) {
 		Socket socket = null;
+		
 		try {
 			//1. 소켓 생성
 			socket = new Socket();
 			
-			//2. 소켓 연결
+			//1-1. 소켓 버퍼 사이즈 확인
+			int receiveBufferSize = socket.getReceiveBufferSize();
+			int sendBufferSize = socket.getSendBufferSize();
+			System.out.println(receiveBufferSize + " : " + sendBufferSize);
+			
+			//1-2. 소켓 버퍼 사이즈 변경
+			socket.setReceiveBufferSize(1024*10);
+			socket.setSendBufferSize(1024*10);
+			receiveBufferSize = socket.getReceiveBufferSize();
+			sendBufferSize = socket.getSendBufferSize();
+			System.out.println(receiveBufferSize + " : " + sendBufferSize);
+			
+			//1-3. So_NODELAY(Nagle Algorithm off)
+			socket.setTcpNoDelay(true);
+			
+			//1-4. SO_TIMEOUT 
+			socket.setSoTimeout(1000);
+			
+			//2. 소켓 연결F
 			socket.connect(new InetSocketAddress(SERVER_IP,SERVER_PORT));
 			System.out.println("[client] connected");
 			
@@ -37,7 +57,11 @@ public class TcpClient {
 			
 			data = new String(buffer, 0, readByteCount, "utf-8");
 			System.out.println("[client] received " + data);
-		} catch (IOException e) {
+			
+		}catch(SocketTimeoutException e) {
+			System.out.println("[client] Time Out");
+		}
+		catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {

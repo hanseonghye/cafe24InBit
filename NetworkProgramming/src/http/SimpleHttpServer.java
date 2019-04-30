@@ -20,7 +20,7 @@ public class SimpleHttpServer {
 			// 2. Bind
 			String localhost ="0.0.0.0";// InetAddress.getLocalHost().getHostAddress();
 			serverSocket.bind( new InetSocketAddress( localhost, PORT ) );
-			consolLog("httpd starts at "+localhost+ " " + PORT);
+			consolLog("httpd starts at "+localhost+ " : " + PORT);
 			 
 
 			while (true) {

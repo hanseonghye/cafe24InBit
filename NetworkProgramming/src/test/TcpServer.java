@@ -16,6 +16,9 @@ public class TcpServer {
 			// 1. 서버 소켓 생성
 			serverSocket = new ServerSocket();
 
+			// 1-1. time-wait 시간에 소켓에 포트 번호 할당을 가능하게 하기 위해서
+			serverSocket.setReuseAddress(true);
+			
 			// 2. 바인딩
 			// : Socket에 SocketAddress(IPAddress + Port)를 바인딩 한다.
 
@@ -56,7 +59,16 @@ public class TcpServer {
 					System.out.println("[server] received : " + data);
 
 					// 6. 데이터 쓰기
-					os.write(data.getBytes("utf-8"));
+//					os.write(data.getBytes("utf-8"));
+					
+					//6-1. 클라이언트 time out test 
+					//			없어도 데이터를 보내지 않으니 같은 결과 ??
+//					try {
+//						Thread.sleep(2000);
+//					} catch (InterruptedException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
 				}
 			} catch (SocketException e) {
 				System.out.println("[server] sudden closed by client");
