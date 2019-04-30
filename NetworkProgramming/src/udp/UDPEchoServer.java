@@ -14,11 +14,11 @@ public class UDPEchoServer {
 		DatagramSocket socket = null;
 		try {
 			
-			//1. ╪рдо ╩Щ╪╨
+			//1. О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 			socket = new DatagramSocket(PORT);
 			
 			while(true){
-				//2. ╣╔юлем ╪Ж╫е
+				//2. О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 				DatagramPacket receivePacket = new DatagramPacket(new byte[BUFFER_SIZE], BUFFER_SIZE);
 				socket.receive(receivePacket);
 				
@@ -27,7 +27,7 @@ public class UDPEchoServer {
 				String message = new String(data, 0, length, "UTF-8");
 				System.out.println("[server] received :"+ message);
 				
-				//3. ╣╔юлем юЭ╪ш
+				//3. О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 				byte[] sendData = message.getBytes("UTF-8");
 				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, receivePacket.getAddress(), receivePacket.getPort());
 				socket.send(sendPacket);
