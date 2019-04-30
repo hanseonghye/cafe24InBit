@@ -23,6 +23,8 @@ public class EchoClient {
 		try {
 			//1. 소켓 생성
 			socket = new Socket();
+			
+			//2. scanner 생성 ( 표준 입력 연결 )
 			scanner = new Scanner(new InputStreamReader(System.in, "utf-8"));
 		
 //			//2-1. 소켓 버퍼 사이즈 확인
@@ -37,15 +39,16 @@ public class EchoClient {
 //			sendBufferSize = socket.getSendBufferSize();
 //			System.out.println(receiveBufferSize + " : " + sendBufferSize);
 			
-			//2. 소켓 연결
+			//2. 서버 연결  --> TCP
 			socket.connect(new InetSocketAddress(SERVER_IP,SERVER_PORT));
 			log("connected");
 			
-			//4.
+			//4. IO stream 생성 ( 받아오기 )
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
 			PrintWriter pr = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"), true);
 			
 			while(true) {
+				
 				//5. 키보드 입력 받기
 				System.out.print(" >> ");
 				String line= scanner.nextLine();

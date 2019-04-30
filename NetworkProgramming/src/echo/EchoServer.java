@@ -15,13 +15,13 @@ public class EchoServer {
 			// 1. 서버 소켓 생성
 			serverSocket = new ServerSocket();
 
+			//2. 바인딩
 			serverSocket.bind(new InetSocketAddress("0.0.0.0", PORT));
 			log("server starts... [ port : "+PORT+" ]");
 
-			// 3. accept
-			// : 클라이언트의 연결요청을 기다린다.
-			
 			while (true) {
+				// 3. accept
+				// : 클라이언트의 연결요청을 기다린다.
 				Socket socket = serverSocket.accept(); // blocking
 				Thread thread = new EchoServerReceiveThread(socket);
 				thread.start();

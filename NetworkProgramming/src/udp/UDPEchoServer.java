@@ -7,12 +7,13 @@ import java.net.SocketException;
 
 public class UDPEchoServer {
 
-	public static final int PORT= 9000;
+	public static final int PORT= 7777;
 	public static final int BUFFER_SIZE = 1024;
 	
 	public static void main(String[] args) {
 		DatagramSocket socket = null;
 		try {
+			
 			//1. 家南 积己
 			socket = new DatagramSocket(PORT);
 			
@@ -27,25 +28,21 @@ public class UDPEchoServer {
 				System.out.println("[server] received :"+ message);
 				
 				//3. 单捞磐 傈价
-				byte[] sendData = message.getBytes("utf-8");
+				byte[] sendData = message.getBytes("UTF-8");
 				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, receivePacket.getAddress(), receivePacket.getPort());
 				socket.send(sendPacket);
 				
-				
 			}
 		} catch (SocketException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			if( socket != null && socket.isClosed() == false) {
 				socket.close();
 			}
 		}
-		
-		
+	
 	}
 
 }

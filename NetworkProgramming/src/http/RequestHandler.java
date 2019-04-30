@@ -55,8 +55,7 @@ public class RequestHandler extends Thread {
 				consoleLog("Request : " + tokens[1]);
 				responseStaticResource(os, tokens[1], tokens[2]);
 			}else { //post, put, delete, head, connect 와 같은 method는 무시.
-				
-				consoleLog("Bad Request :" + tokens[1]);
+				response400Error(os, tokens[2]);
 			}
 			
 			// 예제 응답입니다.
@@ -86,26 +85,9 @@ public class RequestHandler extends Thread {
 			url = "/index.html";
 		}
 		
-		
 		File file = new File(DOCUMENT_ROOT + url);
 		if(file.exists() == false) {
-			// 응답 예시
-			/*
-			 *  Http/1.1 404 file not found\r\n
-			 *  Content-Type:text/html; charset=utf-8\r\n
-			 *  \r\n
-			 *  html  에러 문서 (./webapp/error/404.html)
-			 */
-			//response404Error(os,protocol);
-			File errFile = new File(DOCUMENT_ROOT + "/error/404.html");
-			byte[] body = Files.readAllBytes(errFile.toPath());
-			String contentType = Files.probeContentType(errFile.toPath());
-			
-			//응답
-			os.write( ( protocol + "404 file not found\r\n").getBytes( "UTF-8" ) );
-			os.write( ("Content-Type: "+contentType+"; charset=utf-8\r\n").getBytes( "UTF-8" ) );
-			os.write( "\r\n".getBytes() );
-			os.write( body );
+			response404Error(os,protocol);
 			return ;
 		}
 		
@@ -121,8 +103,35 @@ public class RequestHandler extends Thread {
 	
 	}
 
-	private void response404Error(OutputStream os, String protocol) {
+	private void response404Error(OutputStream os, String protocol) throws IOException {
+		// 응답 예시
+		/*
+		 *  Http/1.1 404 file not found\r\n
+		 *  Content-Type:text/html; charset=utf-8\r\n
+		 *  \r\n
+		 *  html  에러 문서 (./webapp/error/404.html)
+		 */
 		
+		File errFile = new File(DOCUMENT_ROOT + "/error/404.html");
+		byte[] body = Files.readAllBytes(errFile.toPath());
+		String contentType = Files.probeContentType(errFile.toPath());
+		
+		//응답
+		os.write( ( protocol + "404 file not found\r\n").getBytes( "UTF-8" ) );
+		os.write( ("Content-Type: "+contentType+"; charset=utf-8\r\n").getBytes( "UTF-8" ) );
+		os.write( "\r\n".getBytes() );
+		os.write( body );
+	}
+	
+	private void response400Error(OutputStream os, String protocol) throws IOException {
+		File errFile = new File(DOCUMENT_ROOT + "/error/400.html");
+		byte[] body = Files.readAllBytes(errFile.toPath());
+		String contentType = Files.probeContentType(errFile.toPath());
+		
+		os.write( ( protocol + "400 Bad Request\r\n").getBytes("UTF-8") );
+		os.write( ("Content-Type: "+contentType + "; charset=utf-8\r\n").getBytes("UTF-8"));
+		os.write( "\r\n".getBytes() );
+		os.write(body);
 	}
 
 	public void consoleLog( String message ) {

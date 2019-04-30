@@ -30,7 +30,7 @@ public class EchoServerReceiveThread extends Thread {
 			PrintWriter pr = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"), true);
 
 			while (true) {
-				// 5.
+				// 5. 데이터 읽기
 				String data = br.readLine();
 				if (data == null) {
 					EchoServer.log("closed by client");
