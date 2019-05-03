@@ -30,6 +30,14 @@ public class ChatServerApp {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				if (serverSocket != null && serverSocket.isClosed()) {
+					serverSocket.close();
+				}
+			} catch (IOException e) {
+				e.getStackTrace();
+			}
 		}
 
 	}

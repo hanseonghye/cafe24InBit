@@ -30,6 +30,14 @@ public class ChatClientReceiveThread extends Thread {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if (socket != null && socket.isClosed() == false) {
+					socket.close();
+				}
+			} catch (IOException e) {
+				e.getStackTrace();
+			}
 		}
 	}
 }
