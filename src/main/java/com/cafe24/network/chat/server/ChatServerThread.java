@@ -35,12 +35,15 @@ public class ChatServerThread extends Thread {
 				String data = br.readLine();
 				if (data != null) {
 					String[] dataTokens = data.split(":");
-
-					if ("JOIN".equals(dataTokens[0])) {
+					if ("CHEC".contentEquals(dataTokens[0])) {
+						checkName(dataTokens[1], pr);
+					} else if ("JOIN".equals(dataTokens[0])) {
 						doJoin(dataTokens[1], pr);
 					} else if ("SEND".equals(dataTokens[0])) {
 						if (dataTokens.length == 3) {
 							doMSG(dataTokens[1], dataTokens[2]);
+						} else if (dataTokens.length == 4) {
+							doWHIS(dataTokens[1], dataTokens[2], dataTokens[3]);
 						}
 					} else if ("QUIT".equals(dataTokens[0])) {
 						doQuit(dataTokens[1]);
@@ -53,6 +56,17 @@ public class ChatServerThread extends Thread {
 			e.printStackTrace();
 		}
 
+	}
+
+	private void doWHIS(String nickName, String otherName, String msg) {
+		String request = nickName + "님의 귓속말 입니다 ) " + msg;
+		if (mapWriters.containsKey(otherName) == true) {
+			mapWriters.get(otherName).println(request);
+			mapWriters.get(otherName).flush();
+		} else {
+			mapWriters.get(nickName).println("존재하지 않는 유저 입니다.");
+			mapWriters.get(nickName).flush();
+		}
 	}
 
 	private void doQuit(String nickName) throws IOException {
@@ -72,14 +86,23 @@ public class ChatServerThread extends Thread {
 		broadcast(msg);
 	}
 
-	private void doJoin(String nickName, PrintWriter writer) throws IOException {
-		if (mapWriters.containsKey(nickName) == true){
-			writer.println("NO");
-			writer.flush();
-		}else {
-			broadcast(nickName + "님이 입장하였습니다.");
-			addWriter(nickName, writer);
+	private void checkName(String nickName, PrintWriter writer) throws IOException {
+		if (mapWriters.containsKey(nickName) == true) {
+			broadcastTofirst("NO", writer);
+		} else {
+			broadcastTofirst("YES", writer);
 		}
+	}
+
+	private void doJoin(String nickName, PrintWriter writer) throws IOException {
+		broadcastTofirst(" ", writer);
+		broadcast(nickName + "님이 입장하였습니다.");
+		addWriter(nickName, writer);
+	}
+
+	private void broadcastTofirst(String string, PrintWriter writer) {
+		writer.println(string);
+		writer.flush();
 	}
 
 	// list인 writer pool에 파라미터로 받은 writer을 추가한다.
@@ -92,6 +115,7 @@ public class ChatServerThread extends Thread {
 	}
 
 	private void broadcast(String data) throws IOException {
+
 		synchronized (mapWriters) {
 			for (String name : mapWriters.keySet()) {
 				mapWriters.get(name).println(data);

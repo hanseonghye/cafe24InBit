@@ -29,8 +29,8 @@ public class ChatWindow {
 
 	///// 내가 추가
 	private Socket socket;
-	private  PrintWriter pr;
-	private  String nickName;
+	private PrintWriter pr;
+	private String nickName;
 
 	public ChatWindow(String name, Socket socket) {
 		frame = new Frame(name);
@@ -42,12 +42,13 @@ public class ChatWindow {
 		nickName = name;
 		this.socket = socket;
 		socket = null;
+		show();
 
 		try {
 			socket = new Socket();
 			socket.connect(new InetSocketAddress(ChatClientApp.SERVER_IP, ChatClientApp.SERVER_PORT));
 			pr = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"), true);
-			show();
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -111,19 +112,20 @@ public class ChatWindow {
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				finish();
-//				System.exit(0);
 			}
 		});
 		frame.setVisible(true);
 		frame.pack();
-
-		// thread 생성
+		welcomTXT();
 	}
 
-//	private void updateTextArea(String message) {
-//		textArea.append(message);
-//		textArea.append("\n");
-//	}
+	private void welcomTXT() {
+		textArea.append("[ 채팅에 입장하셨습니다. ]");
+		textArea.append("\n");
+		textArea.append("[ 상대방 대화명:메시지 ]형식으로 대화를 입력하시면 귓속말을 할 수 있습니다!  --> 예시 ) A:A야 안녕? ");
+		textArea.append("\n");
+
+	}
 
 	private void sendJoin() {
 		String request = "JOIN:" + this.nickName + "\r\n";
@@ -150,22 +152,20 @@ public class ChatWindow {
 			textField.setText("");
 			textField.requestFocus();
 
-//			updateTextArea(message);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void textAppend(String msg) {
 		textArea.append(msg);
 		textArea.append("\n");
 	}
-	
-	public static void sameName() {
-		textArea.append("같은 대화명 입니다. 창을 끄고 다시 실행해 주세요.");
-		textArea.append("\n");
-		textField.setEditable(false);
-	}
-	
+
+//	public static void sameName() {
+//		textArea.append("같은 대화명 입니다. 창을 끄고 다시 실행해 주세요.");
+//		textArea.append("\n");
+//		textField.setEditable(false);
+//	}
 
 }

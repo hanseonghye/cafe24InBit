@@ -20,12 +20,13 @@ public class ChatClientReceiveThread extends Thread {
 				String msg = br.readLine();
 
 				if (msg != null) {
-
-					if ("NO".equals(msg)) {
-						ChatWindow.sameName();
-					} else {
-						ChatWindow.textAppend(msg);
-					}
+					
+					ChatWindow.textAppend(msg);
+//					if ("NO".equals(msg)) {
+//						ChatWindow.sameName();
+//					} else {
+//						ChatWindow.textAppend(msg);
+//					}
 				}
 			}
 		} catch (IOException e) {
