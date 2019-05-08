@@ -46,7 +46,10 @@ select e.emp_no, CONCAT(e.first_name, ' ', e.last_name) as '이름', s.salary
 -- 4
 select e.emp_no, CONCAT(e.first_name, ' ', e.last_name) as "이름", now_manager.manager_name, d.dept_name
 	from employees e, departments d, dept_emp demp, 
-		(	select CONCAT(e.first_name, ' ', e.last_name) as manager_name , m.dept_no from dept_manager m, employees e where m.to_date='9999-01-01' and m.emp_no = e.emp_no
+		(	select CONCAT(e.first_name, ' ', e.last_name) as manager_name , m.dept_no 
+				from dept_manager m, employees e 
+				where m.to_date='9999-01-01' 
+					and m.emp_no = e.emp_no
 			) as now_manager
 	where e.emp_no=demp.emp_no
 		and demp.to_date = '9999-01-01'
@@ -109,7 +112,12 @@ select t.title, avg(s.salary) as avg_salary
 -- 8
 select d.dept_name, CONCAT(e.first_name, ' ', e.last_name) as "이름",s.salary ,now_manager.manager_name, now_manager.salary
 	from employees e, departments d, dept_emp demp, 
-	(	select CONCAT(e.first_name, ' ', e.last_name) as manager_name,s.salary , m.dept_no from dept_manager m, employees e, salaries s where m.to_date='9999-01-01' and m.emp_no = e.emp_no and m.emp_no=s.emp_no and s.to_date='9999-01-01'
+	(	select CONCAT(e.first_name, ' ', e.last_name) as manager_name,s.salary , m.dept_no 
+			from dept_manager m, employees e, salaries s 
+			where m.to_date='9999-01-01' 
+				and m.emp_no = e.emp_no 
+				and m.emp_no=s.emp_no 
+				and s.to_date='9999-01-01'
 		) as now_manager
 	where e.emp_no=demp.emp_no
 		and demp.to_date = '9999-01-01'
