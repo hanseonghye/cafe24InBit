@@ -1,11 +1,11 @@
-package time;
+package udp;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
 
-public class TimeClient {
+public class UDPTimeClient {
 
 	private static final String SERVER_IP = "192.168.1.4";
 
@@ -14,17 +14,17 @@ public class TimeClient {
 
 		try {
 			socket = new DatagramSocket();
-			socket.connect(new InetSocketAddress(SERVER_IP, TimeServer.PORT));
+			socket.connect(new InetSocketAddress(SERVER_IP, UDPTimeServer.PORT));
 
 			String line = "";
 
 			byte[] sendData = line.getBytes("utf-8");
 			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length,
-					new InetSocketAddress(SERVER_IP, TimeServer.PORT));
+					new InetSocketAddress(SERVER_IP, UDPTimeServer.PORT));
 			socket.send(sendPacket);
 			System.out.println("[ client ] Request Server Time ");
 
-			DatagramPacket receivePacket = new DatagramPacket(new byte[TimeServer.BUFFER_SIZE], TimeServer.BUFFER_SIZE);
+			DatagramPacket receivePacket = new DatagramPacket(new byte[UDPTimeServer.BUFFER_SIZE], UDPTimeServer.BUFFER_SIZE);
 			socket.receive(receivePacket);
 
 			byte[] data = receivePacket.getData();

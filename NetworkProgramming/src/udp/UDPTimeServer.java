@@ -1,4 +1,4 @@
-package time;
+package udp;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -7,7 +7,7 @@ import java.net.SocketException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TimeServer {
+public class UDPTimeServer {
 	
 	public static final int PORT= 9000;
 	public static final int BUFFER_SIZE = 1024;
@@ -27,14 +27,17 @@ public class TimeServer {
 				String message = new String(data,0,length, "UTF-8");
 				System.out.println("[ server ] received : "+ message);
 				
+				byte[] sendData = null;
+				
 				if("".equals(message)) {					
 					SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss a");
 					String date = format.format(new Date());
-					byte[] sendData = date.getBytes("utf-8");
-					DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, receivePacket.getAddress(), receivePacket.getPort());
-					socket.send(sendPacket);
-					System.out.println("[ server ] send : "+date);
+					sendData = date.getBytes("utf-8");
+				}else {
+					sendData = message.getBytes("UTF-8");
 				}
+				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, receivePacket.getAddress(), receivePacket.getPort());
+				socket.send(sendPacket);
 			}
 		}catch (SocketException e) {
 			// TODO Auto-generated catch block
