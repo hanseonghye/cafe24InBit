@@ -3,25 +3,15 @@ package http;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 
 public class RequestHandler extends Thread {
-	
-	private static String documentRoot = "";//"./webapp"; 
-	
-	static {
-		documentRoot  = RequestHandler.class.getClass().getResource("/webapp").getPath();
-	}
-	
+	private static final String DOCUMENT_ROOT = "./webapp"; 
 	private Socket socket;
-	
-	
 	
 	public RequestHandler( Socket socket ) {
 		this.socket = socket;
@@ -95,7 +85,7 @@ public class RequestHandler extends Thread {
 			url = "/index.html";
 		}
 		
-		File file = new File(documentRoot + url);
+		File file = new File(DOCUMENT_ROOT + url);
 		if(file.exists() == false) {
 			response404Error(os,protocol);
 			return ;
@@ -122,7 +112,7 @@ public class RequestHandler extends Thread {
 		 *  html  에러 문서 (./webapp/error/404.html)
 		 */
 		
-		File errFile = new File(documentRoot + "/error/404.html");
+		File errFile = new File(DOCUMENT_ROOT + "/error/404.html");
 		byte[] body = Files.readAllBytes(errFile.toPath());
 		String contentType = Files.probeContentType(errFile.toPath());
 		
@@ -134,7 +124,7 @@ public class RequestHandler extends Thread {
 	}
 	
 	private void response400Error(OutputStream os, String protocol) throws IOException {
-		File errFile = new File(documentRoot + "/error/400.html");
+		File errFile = new File(DOCUMENT_ROOT + "/error/400.html");
 		byte[] body = Files.readAllBytes(errFile.toPath());
 		String contentType = Files.probeContentType(errFile.toPath());
 		

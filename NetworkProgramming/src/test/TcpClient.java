@@ -9,21 +9,21 @@ import java.net.SocketTimeoutException;
 
 public class TcpClient {
 	private static final String SERVER_IP = "192.168.1.4";
-	private static final int SERVER_PORT = 6000;
+	private static final int SERVER_PORT = 5000;
 	
 	public static void main(String[] args) {
 		Socket socket = null;
 		
 		try {
-			//1. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			//1. ¼ÒÄÏ »ý¼º
 			socket = new Socket();
 			
-			//1-1. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
+			//1-1. ¼ÒÄÏ ¹öÆÛ »çÀÌÁî È®ÀÎ
 			int receiveBufferSize = socket.getReceiveBufferSize();
 			int sendBufferSize = socket.getSendBufferSize();
 			System.out.println(receiveBufferSize + " : " + sendBufferSize);
 			
-			//1-2. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			//1-2. ¼ÒÄÏ ¹öÆÛ »çÀÌÁî º¯°æ
 			socket.setReceiveBufferSize(1024*10);
 			socket.setSendBufferSize(1024*10);
 			receiveBufferSize = socket.getReceiveBufferSize();
@@ -36,19 +36,19 @@ public class TcpClient {
 			//1-4. SO_TIMEOUT 
 			socket.setSoTimeout(1000);
 			
-			//2. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½F
+			//2. ¼ÒÄÏ ¿¬°áF
 			socket.connect(new InetSocketAddress(SERVER_IP,SERVER_PORT));
 			System.out.println("[client] connected");
 			
-			//3. iostream ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
+			//3. iostream ¹Þ¾Æ¿À±â
 			InputStream is = socket.getInputStream();
 			OutputStream os = socket.getOutputStream();
 			
-			//4. ï¿½ï¿½ï¿½ï¿½
+			//4. ¾²±â
 			String data = "hello world\n";
 			os.write(data.getBytes("utf-8"));
 			
-			//5. ï¿½Ð±ï¿½
+			//5. ÀÐ±â
 			byte[] buffer = new byte[256];
 			int readByteCount = is.read(buffer);
 			if( readByteCount == -1 ) {
