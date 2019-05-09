@@ -58,22 +58,26 @@ select e.emp_no, CONCAT(e.first_name, ' ', e.last_name) as "이름", now_manager
 
 -- 5
 select e.emp_no , CONCAT(e.first_name, ' ', e.last_name) as "이름", t.title, s.salary
-	from employees e, salaries s, titles t, departments d,
+	from employees e, salaries s, titles t, departments d, dept_emp demp,
 		(
 			select d.dept_no
 				from employees e, salaries s, dept_emp demp, departments d
 			    where e.emp_no = demp.emp_no
-					and demp.to_date = '9999-01-01'
-			        and e.emp_no = s.emp_no
-			        and s.to_date = '9999-01-01'
+					and e.emp_no = s.emp_no
 			        and demp.dept_no = d.dept_no
+                    and demp.to_date = '9999-01-01'
+                    and s.to_date = '9999-01-01'
 			    group by (demp.dept_no)
 			    order by avg(s.salary)  desc limit 1
 			) top_dept
-	where e.dept_no = top_dept.dept_no
+	where e.emp_no = demp.emp_no
+		and top_dept.dept_no=demp.dept_no	
 		and e.emp_no = s.emp_no
 	    and e.emp_no = t.emp_no
-	order by s.salary;
+		and demp.to_date = '9999-01-01'
+        and s.to_date = '9999-01-01'
+        and t.to_date = '9999-01-01'
+	order by s.salary desc;
 
 
 -- 6
@@ -98,7 +102,6 @@ select d.dept_name
     group by (demp.dept_no)
     order by avg(s.salary)  desc limit 1;
 
-
 -- 7
 select t.title, avg(s.salary) as avg_salary
 	from employees e, titles t, salaries s
@@ -108,11 +111,10 @@ select t.title, avg(s.salary) as avg_salary
 	group by (t.title)
     order by avg(s.salary) desc limit 1;
 
-
 -- 8
 select d.dept_name, CONCAT(e.first_name, ' ', e.last_name) as "이름",s.salary ,now_manager.manager_name, now_manager.salary
-	from employees e, departments d, dept_emp demp, 
-	(	select CONCAT(e.first_name, ' ', e.last_name) as manager_name,s.salary , m.dept_no 
+	from employees e, departments d, dept_emp demp, salaries s,
+	(	select CONCAT(e.first_name, ' ', e.last_name) as manager_name, s.salary , m.dept_no 
 			from dept_manager m, employees e, salaries s 
 			where m.to_date='9999-01-01' 
 				and m.emp_no = e.emp_no 
@@ -120,7 +122,9 @@ select d.dept_name, CONCAT(e.first_name, ' ', e.last_name) as "이름",s.salary 
 				and s.to_date='9999-01-01'
 		) as now_manager
 	where e.emp_no=demp.emp_no
+		and e.emp_no = s.emp_no
 		and demp.to_date = '9999-01-01'
-	    and demp.dept_no = now_manager.dept_no
+        and s.to_date = '9999-01-01'
+	    and now_manager.dept_no = demp.dept_no
 	    and demp.dept_no = d.dept_no
 	    and s.salary > now_manager.salary;
