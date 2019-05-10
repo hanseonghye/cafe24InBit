@@ -17,5 +17,4 @@
 
 
 
-:pushpin: `src/test/BookMallApp.java` 실행시 자동으로 insert 와 select 를 실행 합니다.
-
+:pushpin: `src/BookMallApp.java` 실행시 자동으로 insert 와 select 를 실행 합니다.

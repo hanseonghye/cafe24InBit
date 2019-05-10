@@ -1,4 +1,11 @@
-package test;
+import test.AddressDaoTest;
+import test.BookDaoTest;
+import test.CartBookDaoTest;
+import test.CartDaoTest;
+import test.CategoryDaoTest;
+import test.MemberDaoTest;
+import test.OrderBookDaoTest;
+import test.OrderDaoTest;
 
 public class BookMallApp {
 	public static void main(String[] args) {
@@ -6,7 +13,7 @@ public class BookMallApp {
 		///////////////////////////////////////////////////
 		////////////// 데이터 insert ///////////////////////
 		/////////////////////////////////////////////////
-		//InsertAll();
+		InsertAll();
 		
 		///////////////////////////////////////////////////
 		////////////// select 결과 출력 /////////////////////
