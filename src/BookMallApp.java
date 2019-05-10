@@ -37,18 +37,18 @@ public class BookMallApp {
 		BookDaoTest.insertTest("power java", 30000, 2L);
 		
 		//insert address
-		AddressDaoTest.insertTest(1L, "부산광역시 북구 구포동");
-		AddressDaoTest.insertTest(2L, "서울시 역삼동");
+		AddressDaoTest.insertTest(1L, "부산광역시 북구 구포동");   // 모모(1) 회원의 주소
+		AddressDaoTest.insertTest(2L, "서울시 역삼동"); // 사나(2) 회원의 주소
 		
 		//insert default order
-		OrderDaoTest.insertTest(1L, 0, 1L);
+		OrderDaoTest.insertTest(1L, 0, 1L);  // 모모(1) 회원의 주문 데이터를 초기화함.
+		
+		//insert default cart
+		CartDaoTest.insertTest(1L, 0); // 모모(1) 회원의 카트 데이터를 초기화함.
 		
 		//insert order book
-		OrderBookDaoTest.insertTest(1, 1L, 1L);
+		OrderBookDaoTest.insertTest(1, 1L, 1L); // count, book_no, order_no
 		OrderBookDaoTest.insertTest(2,3L, 1L);
-	
-		//insert default cart
-		CartDaoTest.insertTest(1L, 0);
 		
 		//insert cart book
 		CartBookDaoTest.insertTest(1, 2L, 1L);

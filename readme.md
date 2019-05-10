@@ -1,4 +1,4 @@
-# bookMall
+# bookMall :shopping_cart:
 
 ![img](./img/exerd.png)
 
@@ -17,4 +17,24 @@
 
 
 
-:pushpin: `src/BookMallApp.java` 실행시 자동으로 insert 와 select 를 실행 합니다.
+:pushpin: `src/BookMallApp.java` 파일을 run하면, insert 와 select 를 수행 합니다.
+
+
+
+---
+
+### BookMall.java
+
+#### insert 실행 함수
+
+![img](./img/insert.png)
+
+
+
+#### select 실행 함수
+
+![img](./img/select.png)
+
+#### 실행 결과
+
+![img](./img/result.png)
