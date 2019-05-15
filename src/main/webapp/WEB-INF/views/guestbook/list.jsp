@@ -1,23 +1,22 @@
-<%@page import="com.cafe24.mysite.vo.GuestbookVo"%>
-<%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	List<GuestbookVo> list = (List)request.getAttribute("list");
-%>
+<% pageContext.setAttribute("newline", "\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <title>mysite</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="<%=request.getContextPath() %>/assets/css/guestbook.css" rel="stylesheet" type="text/css">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" pageEncoding="UTF-8">
+<link href="${pageContext.servletContext.contextPath }/assets/css/guestbook.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="container">
 		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 		<div id="content">
 			<div id="guestbook">
-				<form action="<%=request.getContextPath() %>/guestbook" method="post">
+				<form action="${pageContext.servletContext.contextPath }/guestbook" method="post">
 					<input type="hidden" name="a" value="add">
 					<table>
 						<tr>
@@ -33,37 +32,34 @@
 					</table>
 				</form>
 				<ul>
+					<c:set var='count' value='${fn:length(list) }'/>
+					<c:forEach items='${list}' var='vo' varStatus='status'>
 				
-				<%
-					int count = list.size();
-					int index = 0;
-					for(GuestbookVo vo: list){
-					
-				%>
 					<li>
 						<table>
 							<tr>
-								<td><%= count - index++ %></td>
-								<td><%= vo.getName() %></td>
-								<td><%= vo.getRegDate() %></td>
-								<td><a href="<%=request.getContextPath() %>/guestbook?a=deleteform&no=<%=vo.getNo()%>">삭제</a></td>
+								<td>[ ${count - status.index}]</td>
+								<td>${ vo.name }</td>
+								<td>${ vo.regDate }</td>
+								<td><a href="${pageContext.servletContext.contextPath }/guestbook?a=deleteform&no=${vo.no}">삭제</a></td>
 							</tr>
 							<tr>
 								<td colspan=4>
-								<%=vo.getContents().replaceAll("\n","<br>") %>
-								
+								${fn:replace(vo.contents,newline, "<br/>")}
 								</td>
 							</tr>
 						</table>
 						<br>
 					</li>
-					<%} %>
+					</c:forEach>
 				</ul>
 			</div>
 		</div>
 		
-		<jsp:include page="/WEB-INF/views/includes/navigation.jsp"></jsp:include>
-		<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
+		<c:import url='/WEB-INF/views/includes/navigation.jsp'>
+			<c:param name="menu" value="guestbook"/>
+		</c:import>
+		<c:import url='/WEB-INF/views/includes/footer.jsp'/>
 	</div>
 </body>
 </html>

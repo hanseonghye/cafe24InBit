@@ -1,11 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="<%=request.getContextPath() %>/assets/css/user.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.servletContext.contextPath }/assets/css/user.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="container">
@@ -15,35 +18,36 @@
 
 				<form id="join-form" name="joinForm" method="post" action="<%=request.getContextPath() %>/user?a=login">
 					<input type="hidden" name="a" value="join">
-					<label class="block-label" for="name">ÀÌ¸§</label>
+					<label class="block-label" for="name">ì´ë¦„</label>
 					<input id="name" name="name" type="text" value="">
 
-					<label class="block-label" for="email">ÀÌ¸ÞÀÏ</label>
+					<label class="block-label" for="email">ì´ë©”ì¼</label>
 					<input id="email" name="email" type="text" value="">
-					<input type="button" value="id Áßº¹Ã¼Å©">
+					<input type="button" value="id ì¤‘ë³µì²´í¬">
 					
-					<label class="block-label">ÆÐ½º¿öµå</label>
+					<label class="block-label">íŒ¨ìŠ¤ì›Œë“œ</label>
 					<input name="password" type="password" value="">
 					
 					<fieldset>
-						<legend>¼ºº°</legend>
-						<label>¿©</label> <input type="radio" name="gender" value="female" checked="checked">
-						<label>³²</label> <input type="radio" name="gender" value="male">
+						<legend>ì„±ë³„</legend>
+						<label>ì—¬</label> <input type="radio" name="gender" value="female" checked="checked">
+						<label>ë‚¨</label> <input type="radio" name="gender" value="male">
 					</fieldset>
 					
 					<fieldset>
-						<legend>¾à°üµ¿ÀÇ</legend>
+						<legend>ì•½ê´€ë™ì˜</legend>
 						<input id="agree-prov" type="checkbox" name="agreeProv" value="y">
-						<label>¼­ºñ½º ¾à°ü¿¡ µ¿ÀÇÇÕ´Ï´Ù.</label>
+						<label>ì„œë¹„ìŠ¤ ì•½ê´€ì— ë™ì˜í•©ë‹ˆë‹¤.</label>
 					</fieldset>
 					
-					<input type="submit" value="°¡ÀÔÇÏ±â">
+					<input type="submit" value="ê°€ìž…í•˜ê¸°">
 					
 				</form>
 			</div>
 		</div>
-		<jsp:include page="/WEB-INF/views/includes/navigation.jsp"></jsp:include>
-		<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
+		<c:import url='/WEB-INF/views/includes/navigation.jsp'>
+		</c:import>
+		<c:import url='/WEB-INF/views/includes/footer.jsp' />
 	</div>
 </body>
 </html>
