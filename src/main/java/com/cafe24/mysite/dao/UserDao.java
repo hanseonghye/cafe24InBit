@@ -9,6 +9,7 @@ import com.cafe24.mysite.vo.UserVo;
 
 
 public class UserDao {
+
 	public UserVo get(Long no) {
 		UserVo result = null;
 

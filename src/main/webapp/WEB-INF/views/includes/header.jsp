@@ -1,15 +1,11 @@
-<%@page import="com.cafe24.mysite.vo.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%
-	UserVo authUser = (UserVo) session.getAttribute("authUser");
-%>
 
 <div id="header">
-	<h1><a href="<%=request.getContextPath()%>/main">MySite</a></h1>
+	<h1><a href="${pageContext.servletContext.contextPath }/main">MySite</a></h1>
 	<ul>
 		<c:choose>
 			<c:when test='${ empty authUser }'>
