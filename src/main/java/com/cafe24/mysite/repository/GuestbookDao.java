@@ -8,6 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cafe24.mysite.vo.GuestbookVo;
@@ -15,14 +19,20 @@ import com.cafe24.mysite.vo.GuestbookVo;
 @Repository
 public class GuestbookDao {
 	
+	@Autowired
+	private DataSource datasource;
+	@Autowired
+	private SqlSession sqlSession;
+	
 	public Boolean delete(GuestbookVo vo) {
+		
 		
 		boolean result = false;
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		try {
 			// 1. JDBC Driver(MariaDB) 로딩
-			conn = getConnection();
+			conn =datasource.getConnection();
 
 			String sql = "delete from guestbook where no=? and password=?";
 			psmt = conn.prepareStatement(sql);
@@ -58,7 +68,7 @@ public class GuestbookDao {
 		PreparedStatement psmt = null;
 		try {
 			// 1. JDBC Driver(MariaDB) 로딩
-			conn = getConnection();
+			conn = datasource.getConnection();
 
 			String sql = "insert into guestbook values(null,?,?,?, now())";
 			psmt = conn.prepareStatement(sql);
@@ -87,64 +97,8 @@ public class GuestbookDao {
 		return result;
 	}
 	public List<GuestbookVo> getList(){
-		List<GuestbookVo> result = new ArrayList<GuestbookVo>();
-
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			conn = getConnection();
-			
-			String sql = "select no, name, contents, date_format(reg_date, '%Y-%m-%d %h:%i:%s') from guestbook order by reg_date desc";
-			pstmt = conn.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			while( rs.next() ) {
-				Long no = rs.getLong(1);
-				String name = rs.getString(2);
-				String contents = rs.getString(3);
-				String regDate = rs.getString(4);	
-				
-				GuestbookVo vo = new GuestbookVo();
-				vo.setNo(no);
-				vo.setName(name);
-				vo.setContents(contents);
-				vo.setRegDate(regDate);
-				
-				result.add(vo);
-			}
-			
-		} catch (SQLException e) {
-			System.out.println("error" + e);
-		} finally {
-			try {
-				if( rs != null ) {
-					rs.close();
-				}
-				if( pstmt != null ) {
-					pstmt.close();
-				}
-				if( conn != null ) {
-					conn.close();
-				}
- 			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}		
+		List<GuestbookVo> result = sqlSession.selectList("guestbook.getlist");
 		return result;
 	}	
 	
-	
-	private Connection getConnection() throws SQLException {
-
-		Connection conn = null;
-		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			String url = "jdbc:mariadb://192.168.1.35:3307/webdb";
-			conn = DriverManager.getConnection(url, "webdb", "webdb");
-		} catch (ClassNotFoundException e) {
-			System.out.println("connection err");
-		}
-		return conn;
-	}
 }
