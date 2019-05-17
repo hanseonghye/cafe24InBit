@@ -1,8 +1,6 @@
 package com.cafe24.mysite.vo;
 
-import org.apache.ibatis.type.Alias;
 
-@Alias("guestbookvo")
 public class GuestbookVo {
 	private Long no;
 	private String name;

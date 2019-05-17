@@ -42,9 +42,9 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(	@RequestParam(value = "email", required = true, defaultValue = "") String email,
-							@RequestParam(value = "password", required = true, defaultValue = "") String password, HttpSession session,
-							Model model) {
+	public String login(@RequestParam(value = "email", required = true, defaultValue = "") String email,
+			@RequestParam(value = "password", required = true, defaultValue = "") String password, HttpSession session,
+			Model model) {
 
 		UserVo authUser = userSerivce.getUser(new UserVo(email, password));
 
@@ -73,8 +73,10 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/inforupdate", method = RequestMethod.POST)
-	public String inforupdate(@ModelAttribute UserVo vo, @RequestParam(value = "pre_email", required = true, defaultValue = "") String pre_email) {
-		userSerivce.update(vo, pre_email);
+	public String inforupdate(@ModelAttribute UserVo vo, HttpSession session) {
+		userSerivce.update(vo);
+		session.removeAttribute("authUser");
+		session.setAttribute("authUser", vo);
 		return "user/inforupdatesuccess";
 	}
 }
