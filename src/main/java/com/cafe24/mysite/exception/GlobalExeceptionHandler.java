@@ -23,6 +23,7 @@ public class GlobalExeceptionHandler {
 		request.setAttribute("uri",request.getRequestURI());
 		request.setAttribute("exception", errors.toString());
 		request.getRequestDispatcher("/WEB-INF/views/error/500.jsp").forward(request, response);
+		// return "error/500"; 이랑 같다
 	}
 
 	@ExceptionHandler(Exception.class)

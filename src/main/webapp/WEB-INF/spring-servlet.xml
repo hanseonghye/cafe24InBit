@@ -15,8 +15,35 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!--1. vaildator, conversionService, messageConvert -->
-	<mvc:annotation-driven />
+
+	<!-- Validator, Conversion Service, Formatter Message Converter 설정 -->
+
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean
+				class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html; charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+ 			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>application/json; charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+
+
+
+
 
 	<!--2. 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
 	<mvc:default-servlet-handler />
@@ -35,6 +62,6 @@
 
 	<!--5. controller scanning 하는 base package -->
 	<context:component-scan
-		base-package="com.cafe24.mysite.controller, com.cafe24.mysite.exception" />
+		base-package="com.cafe24.mysite.controller,com.cafe24.mysite.controller.api, com.cafe24.mysite.exception" />
 
 </beans>

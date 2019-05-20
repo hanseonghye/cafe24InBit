@@ -53,4 +53,8 @@ public class UserDao {
 		return 1 == sqlSession.update("user.update",vo);
 	}
 
+	public UserVo get(String email) {
+		return sqlSession.selectOne("user.getByEmail",email);
+	}
+
 }

@@ -18,14 +18,18 @@ public class UserService {
 //	public UserVo getUser(Long no) {
 //		return userDao.get(no);
 //	}
-	
+
 	public UserVo getUser(UserVo userVo) {
-		return userDao.get(userVo.getEmail(),userVo.getPassword());
+		return userDao.get(userVo.getEmail(), userVo.getPassword());
 	}
 
 	public void update(UserVo vo) {
 		userDao.update(vo);
 	}
-	
-	
+
+	public Boolean existEmail(String email) {
+		UserVo userVo = userDao.get(email);
+		return userVo != null;
+	}
+
 }
