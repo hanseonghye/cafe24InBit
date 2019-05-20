@@ -36,15 +36,16 @@
 										dataType : "json",
 										data : "",
 										success : function(response) {
-											if (response.result != "fail") {
+											console.dir(response)
+											if (response.result != "success") {
 												console.error(response.message);
 												return;
 											}
 
 											if (response.data == true) {
 												alert("이미 존재하는 이메일 입니다.")
-												$("#email").focuse();
-												
+												$("#email").focus();
+												$("#email").val("");
 												return ;
 											}
 											if (response.data == false) {
@@ -75,7 +76,7 @@
 						class="block-label" for="email">이메일</label> <input id="email"
 						name="email" type="text" value="" required> <input
 						type="button" value="체크" id="check-button"> <img
-						style="display: none" id="check-images"
+						style="display: none" id="check-image"
 						src="${pageContext.servletContext.contextPath }/assets/images/check_icon.png" />
 
 					<label class="block-label">패스워드</label> <input name="password"

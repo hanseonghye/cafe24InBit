@@ -31,5 +31,4 @@ public class UserService {
 		UserVo userVo = userDao.get(email);
 		return userVo != null;
 	}
-
 }
