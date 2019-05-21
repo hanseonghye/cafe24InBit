@@ -15,7 +15,8 @@
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<div id="content">
 			<div id="board">
-				<form class="board-form" method="post" action="${pageContext.servletContext.contextPath }/board/write">
+				<form class="board-form" method="post" action="${pageContext.servletContext.contextPath }/board/writereply">
+					<input type = "hidden" name = "parent_no" value="${ parent_no }">
 					<input type = "hidden" name = "user_no" value="${ authUser.no }">
 					<table class="tbl-ex">
 						<tr>

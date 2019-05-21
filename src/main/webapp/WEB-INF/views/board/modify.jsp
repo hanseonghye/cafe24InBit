@@ -1,63 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="<%=request.getContextPath() %>/assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.servletContext.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="container">
-		<div id="header">
-			<h1>MySite</h1>
-			<ul>
-				<li><a href="">ë¡ê·¸ì¸</a><li>
-				<li><a href="">íìê°ì</a><li>
-				<li><a href="">íìì ë³´ìì </a><li>
-				<li><a href="">ë¡ê·¸ìì</a><li>
-				<li>ë ìëíì¸ì ^^;</li>
-			</ul>
-		</div>
+		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<div id="content">
 			<div id="board">
-				<form class="board-form" method="post" action="">
+				<form class="board-form" method="post" action="${pageContext.servletContext.contextPath }/board/modify">
 					<table class="tbl-ex">
+						<input type="hidden" name="no" value="${board.no }">
 						<tr>
-							<th colspan="2">ê¸ìì </th>
+							<th colspan="2">글수정</th>
 						</tr>
 						<tr>
-							<td class="label">ì ëª©</td>
-							<td><input type="text" name="title" value=""></td>
+							<td class="label">제목</td>
+							<td><input type="text" name="title" value="${board.title }"></td>
 						</tr>
 						<tr>
-							<td class="label">ë´ì©</td>
+							<td class="label">내용</td>
 							<td>
-								<textarea id="content" name="content">ìì í´ì¼ í  ê¸ì ê³ ëë¡ 
-ì´ë ê² textareaì ë¿ë ¤ì¼ í©ëë¤.
-ê°íë¬¸ì ë³ê²½ë íì§ë§ì¸ì.
-ííííí
-ì¦ê±´ ì½ë© ëì¸ì~~~~</textarea>
+								<textarea id="content" name="content">
+									${board.content }
+								</textarea>
 							</td>
 						</tr>
 					</table>
 					<div class="bottom">
-						<a href="">ì·¨ì</a>
-						<input type="submit" value="ìì ">
+						<a href="${pageContext.servletContext.contextPath }/board/view/${board.no}">취소</a>
+						<input type="submit" value="수정">
 					</div>
 				</form>				
 			</div>
 		</div>
-		<div id="navigation">
-			<ul>
-				<li><a href="">ìëí</a></li>
-				<li><a href="">ë°©ëªë¡</a></li>
-				<li><a href="">ê²ìí</a></li>
-			</ul>
-		</div>
-		<div id="footer">
-			<p>(c)opyright 2015, 2016, 2017, 2018</p>
-		</div>
+		<c:import url="/WEB-INF/views/includes/navigation.jsp">
+			<c:param name="menu" value="board" />
+		</c:import>
+		<c:import url="/WEB-INF/views/includes/footer.jsp" />
 	</div>
 </body>
 </html>

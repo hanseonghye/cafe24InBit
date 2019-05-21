@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+	<insert id="contentinsert" parameterType="boardvo">
+		<![CDATA[
+			insert 
+				into board
+			values(null, #{content}, 0, now(), #{title}, #{user_no}, (SELECT IFNULL(MAX(group_no) + 1, 1) FROM board b), 1, 0)
+		
+		]]>
+	</insert>
+	
+	<insert id="insertReply" parameterType="boardvo">
+		<![CDATA[
+			insert
+				into board
+				values(null,#{content},0,now(),#{title},#{user_no},
+						(SELECT b.group_no FROM board b WHERE b.no =#{parent_no}),
+						(SELECT b.order_no+1 FROM board b WHERE b.no =#{parent_no}),
+						(SELECT b.depth+1 FROM board b WHERE b.no =#{parent_no})
+					)				
+		]]>
+		
+		<selectKey keyProperty="no" resultType="long" order="AFTER">
+			<![CDATA[
+				select last_insert_id()
+			]]>
+		</selectKey>
+	</insert>
+	
+	<update id="updateByReplyAdd" parameterType="boardvo">
+		<![CDATA[
+			update board
+				set order_no=order_no+1
+				where group_no in (SELECT * FROM (SELECT b.group_no from board b where b.no=#{parent_no}) a )
+						and no !=#{no}
+						and order_no >= #{order_no}
+		]]>
+	</update>
+
+	<select id="getlist" resultType="boardvo" parameterType="map">
+		<![CDATA[
+			select b.no, b.title, u.name, b.hit, b.reg_date, b.group_no, b.order_no
+			from board b, user u
+			where b.user_no=u.no
+			order by b.reg_date desc
+			limit #{counttop}, #{countpage}
+		]]>
+	</select>
+	
+	<select id="getBoardCount" resultType="long">
+		<![CDATA[
+			select count(*)
+			from board
+		]]>
+		
+	</select>
+	
+	<select id="getByNo" resultType="boardvo" parameterType="map">
+		<![CDATA[
+			select b.no, b.title, b.content, u.name, b.hit, b.reg_date, b.group_no, b.order_no
+			from board b, user u
+			where b.group_no=#{groupno}
+				and b.order_no=#{orderno}
+				and b.user_no = u.no
+		]]>
+	</select>
+	
+	<update id="update" parameterType="boardvo">
+		<![CDATA[
+			update board
+				set title=#{title}, content=#{content}, reg_date=now()
+			where no=#{no}
+		]]>
+		
+	</update>
+</mapper>
