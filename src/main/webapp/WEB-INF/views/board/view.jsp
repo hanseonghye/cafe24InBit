@@ -34,7 +34,7 @@
 				</table>
 				<div class="bottom">
 					<a href="${pageContext.servletContext.contextPath }/board">글목록</a>
-					<a href="${pageContext.servletContext.contextPath }/board/modify/${board.group_no}/${board.order_no}">글수정</a>
+					<a href="${pageContext.servletContext.contextPath }/board/modify/${board.no}">글수정</a>
 					<a href="${pageContext.servletContext.contextPath }/board/writereply/${board.no}">답글</a>
 				</div>
 			</div>

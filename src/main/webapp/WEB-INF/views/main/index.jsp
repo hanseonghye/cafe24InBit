@@ -13,7 +13,7 @@
 <script src="${pageContext.servletContext.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
 <script>
 	$(function(){
-		console.log("dd")
+
 	})
 </script>
 

@@ -42,4 +42,20 @@ public class BoardService {
 	public Boolean updateByReplyAdd(BoardVo vo) {
 		return boardDao.updateByReplyAdd(vo);
 	}
+
+	public BoardVo getBoard(Long no) {
+		return boardDao.getBoard(no);
+	}
+
+	public Boolean deleteBoard(Long no) {
+		return boardDao.deleteBoard(no);
+	}
+
+	public Boolean hitUpdate(Long no) {
+		return boardDao.hitUpdate(no);
+	}
+
+	public List<BoardVo> search(String kwd, long countTop, long count) {
+		return boardDao.getSearch(kwd, countTop, count);
+	}
 }

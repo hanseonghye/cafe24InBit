@@ -4,18 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.print.attribute.HashAttributeSet;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.cafe24.mysite.controller.BoardController;
 import com.cafe24.mysite.vo.BoardVo;
 
 @Repository
 public class BoardDao {
-	private long countPage;
 
 	@Autowired
 	private SqlSession sqlSession;
@@ -23,27 +19,48 @@ public class BoardDao {
 	public BoardDao() {
 		
 	}
+	
 	public Boolean contentinsert(BoardVo vo) {
 		return 1 == sqlSession.insert("board.contentinsert",vo);
 	}
-	public List<BoardVo> getList(long page, long _totalCount) {
-		long totalCount = _totalCount;
-		countPage = BoardController.countPage;
-		long countTop ;
-		
-		if (totalCount <= countPage) {
-			countTop = 0;
-		}else if (page*countPage > totalCount) {
-			countTop = totalCount - (page -1 )*countPage;
-		}else {
-			countTop = (page -1)*countPage;
-		}
-		
+	
+	public List<BoardVo> getList(long countTop, long count) {
 		Map<String,Object> map =new HashMap<String,Object>();
-		map.put("countpage",countPage);
 		map.put("counttop",countTop);
+		map.put("count",count);
 		List<BoardVo> result = sqlSession.selectList("board.getlist",map);
-
+		
+		return result;
+	}
+	
+//	public List<BoardVo> getList_(long page, long _totalCount) {
+//		long totalCount = _totalCount;
+//		countPage = BoardController.countPage;
+//		long countTop ;
+//		
+//		if (totalCount <= countPage) {
+//			countTop = 0;
+//		}else if (page*countPage > totalCount) {
+//			countTop = totalCount - (page -1 )*countPage;
+//		}else {
+//			countTop = (page -1)*countPage;
+//		}
+//		
+//		Map<String,Object> map =new HashMap<String,Object>();
+//		map.put("countpage",countPage);
+//		map.put("counttop",countTop);
+//		List<BoardVo> result = sqlSession.selectList("board.getlist",map);
+//
+//		return result;
+//	}
+	
+	public List<BoardVo> getSearch(String kwd, long countTop, long count) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("kwd",kwd);
+		map.put("counttop",countTop);
+		map.put("count",count);
+		
+		List<BoardVo> result = sqlSession.selectList("board.getsearch",kwd);
 		return result;
 	}
 	public BoardVo getBoard(Long group_no, Long order_no) {
@@ -65,7 +82,17 @@ public class BoardDao {
 	}
 	
 	public Boolean updateByReplyAdd(BoardVo vo) {
-		return 1 == sqlSession.update("board.updateByReplyAdd",vo);
+		return 1 == sqlSession.update("board.updateByReplyAdd",vo.getNo());
+	}
+	public BoardVo getBoard(Long no) {
+		return sqlSession.selectOne("board.getByNo2",no);
+	}
+	public Boolean deleteBoard(Long no) {
+		// TODO Auto-generated method stub
+		return 1 == sqlSession.update("board.updateBydelete",no);
+	}
+	public Boolean hitUpdate(Long no) {
+		return 1 == sqlSession.update("board.updateHit",no);
 	}
 
 }
