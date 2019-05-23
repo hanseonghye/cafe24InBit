@@ -15,10 +15,6 @@ public class UserService {
 		return userDao.insert(vo);
 	}
 
-//	public UserVo getUser(Long no) {
-//		return userDao.get(no);
-//	}
-
 	public UserVo getUser(UserVo userVo) {
 		return userDao.get(userVo.getEmail(), userVo.getPassword());
 	}

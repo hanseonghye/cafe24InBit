@@ -6,7 +6,7 @@
 		<![CDATA[
 			insert 
 				into board
-			values(null, #{content}, 0, now(), #{title}, #{user_no}, (SELECT IFNULL(MAX(group_no) + 1, 1) FROM board b), 1, 0)
+			values(null, #{content}, 0, now(), #{title}, #{user_no}, (SELECT IFNULL(MAX(group_no) + 1, 1) FROM board b), 1, 0,'LIVE')
 		
 		]]>
 	</insert>
@@ -44,9 +44,9 @@
 	
 	<select id="getlist" resultType="boardvo" parameterType="map">
 		<![CDATA[
-			select b.no, b.title, u.name, b.hit, b.reg_date, b.group_no, b.order_no, b.depth
+			select b.no, b.title,b.user_no, u.name, b.hit, b.reg_date, b.group_no, b.order_no, b.depth, b.status
 			from board b, user u
-			where b.user_no=u.no
+			where ( b.user_no=u.no )
 			order by b.group_no desc, b.order_no asc
 			limit #{counttop}, #{count}
 		]]>
@@ -54,13 +54,13 @@
 
 	<select id="getsearch" resultType="boardvo" parameterType="map">
 		<![CDATA[
-			select b.no, b.title, u.name, b.hit, b.reg_date, b.group_no, b.order_no, b.depth
+			select b.no, b.title, u.name, b.hit, b.reg_date, b.group_no, b.order_no, b.depth, b.status
 			from board b, user u
 			where ( b.title like CONCAT('%', #{kwd}, '%')
 					or b.content like CONCAT('%', #{kwd}, '%')
-				) and (b.user_no = u.no )
-			<!-- order by b.group_no desc, b.order_no asc
-			limit #{counttop}, #{count} -->
+				) and (b.user_no = u.no ) and (status = 'LIVE')
+			order by b.group_no desc, b.order_no asc
+			limit 0,4
 		]]>
 	</select>
 
@@ -72,23 +72,13 @@
 
 	</select>
 
-	<select id="getByNo2" resultType="boardvo" parameterType="long">
+	<select id="getByNo" resultType="boardvo" parameterType="long">
 		<![CDATA[
-			select b.no, b.title, b.content, u.name, b.hit, b.reg_date, b.group_no, b.order_no
+			select b.no, b.title, b.content,b.user_no, u.name, b.hit, b.reg_date, b.group_no, b.order_no, b.status
 			from board b, user u
 			where b.no=#{no}
 				and b.user_no = u.no
 				
-		]]>
-	</select>
-
-	<select id="getByNo" resultType="boardvo" parameterType="map">
-		<![CDATA[
-			select b.no, b.title, b.content, u.name, b.hit, b.reg_date, b.group_no, b.order_no
-			from board b, user u
-			where b.group_no=#{groupno}
-				and b.order_no=#{orderno}
-				and b.user_no = u.no
 		]]>
 	</select>
 
@@ -103,7 +93,7 @@
 	<update id="updateBydelete" parameterType="long">
 		<![CDATA[
 			update board
-				set title="삭제된 글입니다", content="글쓴이에 의해 삭제됐습니다"
+				set title="삭제된 글입니다", content="글쓴이에 의해 삭제됐습니다", status='DIE'
 			where no=#{no}
 		]]>
 	</update>

@@ -14,53 +14,44 @@
 	
 <script src="${pageContext.servletContext.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
 <script>
+
+	function page_move(url){
+		var form = document.createElement("form")
+		form.action=url;
+		form.method="post"
+		document.body.appendChild(form)
+		form.submit();
+	}
+
 	$(function() {
+		var jumpPage = ${jumppage};
 		var nowPage = ${nowPage} -1;
 		var countPage =${countPage}
 		var pager = Number('${pager}')
-		var jsonData = ${jsonlist}
-		jsonData.sort(function(a,b){
-			if (parseFloat(b.group_no) > parseFloat(a.group_no)){
-				return 1;
-			}else if (parseFloat(b.group_no) < parseFloat(a.group_no)){
-				return -1;
-			}else{
-				return parseFloat(a.order_no) - parseFloat(b.order_no)
+		
+		var nowBigPage = (parseInt(nowPage/3))*3 +1;
+		if(nowBigPage != 1){
+			$('#pager').append('<li><a href="${pageContext.servletContext.contextPath }/board/list/'+(nowBigPage-jumpPage)+'">◀</a></li>');
+		}
+		var isEndPage = false
+		for (var i = nowBigPage; i <= (nowBigPage-1+jumpPage) ; ++i){
+			var str = ""
+			if ( i == (nowPage+1) ){
+				str = '<li class="selected" id="pager-'+i+'"><a href="${pageContext.servletContext.contextPath }/board/list/'+i+'">'+i+"</a></li>"
+			}else {
+				str = '<li id="pager-'+i+'"><a href="${pageContext.servletContext.contextPath }/board/list/'+i+'">'+i+"</a></li>"
 			}
-		})
-		
-		
-		for (var i =0; i<jsonData.length; ++i){
-			var str = '<tr>'
-			str = str +'<td>'+(nowPage*countPage+i+1)+'</td>'
-			if (jsonData[i].depth != 0 ){
-				str = str +'<td style="text-align: left;'+'padding-left:'+jsonData[i].depth*20+'px">'+'<img src="${pageContext.servletContext.contextPath }/assets/images/reply.png">'+'<a href="${pageContext.servletContext.contextPath }/board/view/'+jsonData[i].no+'">'+jsonData[i].title+'</a></td>'
-			}else{
-				str = str +'<td style="text-align: left;"><a href="${pageContext.servletContext.contextPath }/board/view/'+jsonData[i].no+'">'+jsonData[i].title+'</a></td>'
-			} 
-			str = str + '<td>' + jsonData[i].name+'</td>'
-			str = str + '<td>' + jsonData[i].hit+'</td>'
-			str = str + '<td>' + jsonData[i].reg_date+'</td>'
-			str = str + '<td><a href="${pageContext.servletContext.contextPath }/board/delete/'+jsonData[i].no+'" class="del">삭제</a></td>'
-			str = str+'</tr>'
-			$('#tbl-ex').append(str);	
-		}
-		
-		
-		
-		$('#pager').append('<li><a href="">◀</a></li>');
-		for (var i =1; i<=pager; ++i){
-			var str = '<li id="pager-'+i+'"><a href="${pageContext.servletContext.contextPath }/board/list/'+i+'">'+i+"</a></li>"
 			$('#pager').append(str)
+			if(i == pager){
+				isEndPage = true;
+				break;
+			}
 		}
 		
-		$('#pager').append('<li><a href="">▶</a></li>');
-		
-		$('#pager li').click(
-			function(){
-				
-			}		
-		)
+		if (isEndPage == false){
+			$('#pager').append('<li><a href="${pageContext.servletContext.contextPath }/board/list/'+(nowBigPage+jumpPage)+'">▶</a></li>');
+		}
+
 	})
 </script>
 </head>
@@ -69,7 +60,7 @@
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<div id="content">
 			<div id="board">
-				<form id="search_form" action="${pageContext.servletContext.contextPath }/board/search" method="post">
+				<form id="search_form" action="${pageContext.servletContext.contextPath }/board/search/1" method="post">
 					<input type="text" id="kwd" name="kwd" value=""> <input
 						type="submit" value="찾기">
 				</form>
@@ -82,17 +73,56 @@
 						<th>작성일</th>
 						<th>&nbsp;</th>
 					</tr>
-
+					<c:forEach items='${list }' var='vo' varStatus='status'>
+					<tr>
+						 <c:choose>
+							<c:when test="${vo.status eq 'DIE' }">
+								<td>${ vo.no}</td>
+								<td>${vo.title } </td>
+								<td> </td>								
+								<td> </td>
+								<td> </td>
+								<td> </td>
+							</c:when>
+							<c:otherwise>
+								<td>${vo.no }</td>
+								<c:choose>
+									<c:when test="${vo.depth == '0' }" >
+										<td style="text-align: left;"><a href="${pageContext.servletContext.contextPath }/board/view/${vo.no}">${vo.title }</a></td>
+									</c:when>
+									<c:otherwise>
+										<td style="text-align: left; padding-left:${vo.depth*20}px"><img src="${pageContext.servletContext.contextPath }/assets/images/reply.png"><a href="${pageContext.servletContext.contextPath }/board/view/${vo.no}">${vo.title }</a></td>
+									</c:otherwise>
+								</c:choose>
+								<td>${vo.name }</td>
+								<td>${vo.hit }</td>
+								<td>${vo.reg_date }</td>
+								<c:choose>
+									<c:when test='${!empty authUser }'>
+										<c:choose>
+											<c:when test='${authUser.no eq vo.user_no }'>
+												<td><a onclick="page_move('${pageContext.servletContext.contextPath }/board/delete/${vo.no}')" class="del">삭제</a></td>
+											</c:when>
+											<c:otherwise>
+												<td></td>
+											</c:otherwise>	
+										</c:choose>
+									</c:when>
+									<c:otherwise>
+										<td></td>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
+					</tr>
+					</c:forEach>
 				</table>
 
 				<!-- pager 추가 -->
 				<div class="pager">
 					<ul id="pager">
-<!-- 						<li><a href="">◀</a></li>
-						<li><a href="">▶</a></li> -->
 					</ul>
 				</div>
-				<!-- pager 추가 -->
 
 				<div class="bottom">
 					<a href="${pageContext.servletContext.contextPath }/board/write" id="new-book">글쓰기</a>

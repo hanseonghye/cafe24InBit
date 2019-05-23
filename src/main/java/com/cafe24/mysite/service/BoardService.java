@@ -23,10 +23,6 @@ public class BoardService {
 		return boardDao.getList(number, totalCount);
 	}
 
-	public BoardVo getBoard(Long group_no, Long order_no) {
-		return boardDao.getBoard(group_no, order_no);
-	}
-
 	public Boolean modify(BoardVo vo) {
 		return boardDao.modify(vo);
 	}
@@ -57,5 +53,11 @@ public class BoardService {
 
 	public List<BoardVo> search(String kwd, long countTop, long count) {
 		return boardDao.getSearch(kwd, countTop, count);
+	}
+
+	public BoardVo getBoardAndHitUpdate(Long no) {
+		BoardVo vo = getBoard(no);
+		hitUpdate(no);
+		return vo;
 	}
 }

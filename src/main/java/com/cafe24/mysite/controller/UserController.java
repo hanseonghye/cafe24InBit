@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.mysite.service.UserService;
 import com.cafe24.mysite.vo.UserVo;
+import com.cafe24.security.Auth;
+import com.cafe24.security.AuthUser;
 
 @Controller
 @RequestMapping("/user")
@@ -29,13 +31,6 @@ public class UserController {
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(@ModelAttribute @Valid UserVo vo, BindingResult result, Model model) {
-//		if (result.hasErrors()) {
-//			List<ObjectError> errorList = result.getAllErrors();
-//			for(ObjectError err : errorList) {
-//				System.out.println(err);
-//			}
-//			return "/user/join";
-//		}
 
 		if (result.hasErrors()) {
 			model.addAllAttributes(result.getModel());
@@ -71,18 +66,17 @@ public class UserController {
 		return "redirect:/";
 	}
 
-	@RequestMapping("/logout")
-	public String logout(HttpSession session) {
-		session.removeAttribute("authUser");
-		session.invalidate();
-		return "redirect:/";
-	}
+	/*
+	 * @RequestMapping("/logout") public String logout(HttpSession session) {
+	 * session.removeAttribute("authUser"); session.invalidate(); return
+	 * "redirect:/"; }
+	 */
 
+	@Auth(role=Auth.Role.USER)
 	@RequestMapping("/update")
-	public String update(HttpSession session) {
-		if (session.getAttribute("authUser") == null) {
-			return "user/login";
-		}
+	public String update(@AuthUser UserVo authUser, Model model) {
+		UserVo userVo = userSerivce.getUser(authUser);
+		model.addAttribute("userVo",userVo);
 		return "user/update";
 	}
 

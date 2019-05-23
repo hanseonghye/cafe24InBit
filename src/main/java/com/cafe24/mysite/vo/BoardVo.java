@@ -10,6 +10,7 @@ public class BoardVo {
 	private Long order_no;
 	private Long depth;
 	private Long user_no;
+	private String status;
 	
 	private String name;
 	private Long parent_no;
@@ -81,12 +82,19 @@ public class BoardVo {
 	public void setParent_no(Long parent_no) {
 		this.parent_no = parent_no;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
 		return "BoardVo [no=" + no + ", title=" + title + ", content=" + content + ", hit=" + hit + ", reg_date="
 				+ reg_date + ", group_no=" + group_no + ", order_no=" + order_no + ", depth=" + depth + ", user_no="
-				+ user_no + ", name=" + name + ", parent_no=" + parent_no + "]";
+				+ user_no + ", status=" + status + ", name=" + name + ", parent_no=" + parent_no + "]";
 	}
+	
 	
 	
 }
