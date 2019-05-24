@@ -41,6 +41,7 @@ public class BoardController {
 
 	@RequestMapping(value = { "/list/{no}" }, method = RequestMethod.GET)
 	public String listPage(Model model, @PathVariable(value = "no") int no) throws JsonProcessingException {
+		System.out.println("---> " + totalCount);
 		long countTop = (no - 1) * countPage;
 		long count = getHowManyBoardGet(no,totalCount);
 

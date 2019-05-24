@@ -77,7 +77,7 @@
 					<tr>
 						 <c:choose>
 							<c:when test="${vo.status eq 'DIE' }">
-								<td> </td>
+								<td>${vo.no } </td>
 								<td>${vo.title } </td>
 								<td> </td>								
 								<td> </td>

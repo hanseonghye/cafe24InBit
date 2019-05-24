@@ -20,10 +20,6 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	</servlet>
 
-	<!-- <servlet> <servlet-name>contextConfigLocation</servlet-name> <servlet-class>/WEB-INF/applicationContext.xml</servlet-class> 
-		</servlet> -->
-
-
 	<servlet-mapping>
 		<servlet-name>spring</servlet-name>
 		<url-pattern>/</url-pattern>

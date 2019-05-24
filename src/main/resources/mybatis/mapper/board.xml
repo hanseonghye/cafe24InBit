@@ -75,7 +75,6 @@
 		<![CDATA[
 			select count(*)
 			from board
-			where status = 'LIVE'
 		]]>
 
 	</select>
