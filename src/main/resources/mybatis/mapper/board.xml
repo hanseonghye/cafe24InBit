@@ -51,6 +51,14 @@
 			limit #{counttop}, #{count}
 		]]>
 	</select>
+	
+	<select id="getTotalSearchCount" resultType="long" parameterType="string">
+		select count(*)
+				from board b, user u
+				where ( b.title like CONCAT('%', #{kwd}, '%')
+						or b.content like CONCAT('%', #{kwd}, '%')
+					) and (b.user_no = u.no ) and (status = 'LIVE')
+	</select>
 
 	<select id="getsearch" resultType="boardvo" parameterType="map">
 		<![CDATA[
@@ -60,7 +68,6 @@
 					or b.content like CONCAT('%', #{kwd}, '%')
 				) and (b.user_no = u.no ) and (status = 'LIVE')
 			order by b.group_no desc, b.order_no asc
-			limit 0,4
 		]]>
 	</select>
 
@@ -68,6 +75,7 @@
 		<![CDATA[
 			select count(*)
 			from board
+			where status = 'LIVE'
 		]]>
 
 	</select>

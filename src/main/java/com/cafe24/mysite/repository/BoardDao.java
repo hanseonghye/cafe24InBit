@@ -68,4 +68,8 @@ public class BoardDao {
 		return 1 == sqlSession.update("board.updateHit",no);
 	}
 
+	public Long getTotalSearchCount(String kwd) {
+		return sqlSession.selectOne("board.getTotalSearchCount", kwd);
+	}
+
 }

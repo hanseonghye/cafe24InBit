@@ -60,4 +60,8 @@ public class BoardService {
 		hitUpdate(no);
 		return vo;
 	}
+
+	public Long getTotalSearchCount(String kwd) {
+		return boardDao.getTotalSearchCount(kwd);
+	}
 }

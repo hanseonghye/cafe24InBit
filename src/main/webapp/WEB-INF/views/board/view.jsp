@@ -13,7 +13,6 @@
 <script>
 	function page_move(url){
 		var form = document.createElement("form")
-		
 		form.action=url;
 		form.method="post"
 		document.body.appendChild(form)
@@ -44,12 +43,12 @@
 					</tr>
 				</table>
 				<div class="bottom">
-					<a href="${pageContext.servletContext.contextPath }/board">글목록</a>
+					<a href="${pageContext.servletContext.contextPath }/board/list/1">글목록</a>
 					<c:if test='${!empty authUser }'>
 						 <c:if test='${authUser.no eq board.user_no }'>
 							<a onclick="page_move('${pageContext.servletContext.contextPath }/board/modify/${board.no}')">글수정</a>
 						</c:if>
-						<a onclick="page_move(${pageContext.servletContext.contextPath }/board/writereply/${board.no}')">답글</a>
+						<a onclick="page_move('${pageContext.servletContext.contextPath }/board/writereply/${board.no}')">답글</a>
 					</c:if>
 				</div>
 			</div>

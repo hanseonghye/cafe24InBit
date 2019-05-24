@@ -8,13 +8,15 @@ public class UserVo {
 	private Long no;
 	
 	@NotEmpty
-	@Length(min=2, max=8)
+	@Length(min=2, max=10)
 	private String name;
 	
 	@Email
 	@NotEmpty
 	private String email;
 	private String joinDate;
+	
+	@NotEmpty
 	private String password;
 	private String gender;
 	

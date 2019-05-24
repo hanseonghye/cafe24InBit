@@ -2,6 +2,8 @@ package com.cafe24.mysite.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +31,7 @@ public class GuestbookController {
 	}
 	
 	@RequestMapping(value="/add", method = RequestMethod.POST)
-	public String add(@ModelAttribute GuestbookVo vo) {
+	public String add(@ModelAttribute @Valid GuestbookVo vo) {
 		guestbookService.add(vo);
 		return "redirect:/guestbook";
 	}

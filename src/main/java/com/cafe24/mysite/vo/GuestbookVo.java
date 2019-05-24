@@ -1,10 +1,18 @@
 package com.cafe24.mysite.vo;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class GuestbookVo {
 	private Long no;
+	
+	@NotEmpty
+	@Length(min=2, max=10)
 	private String name;
+	@NotEmpty
 	private String password;
+	
+	@NotEmpty
 	private String contents;
 	private String regDate;
 	public Long getNo() {

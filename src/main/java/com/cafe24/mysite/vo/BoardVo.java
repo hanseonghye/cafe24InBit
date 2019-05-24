@@ -1,8 +1,14 @@
 package com.cafe24.mysite.vo;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class BoardVo {
 	private Long no;
+	
+	@NotEmpty
 	private String title;
+	
+	@NotEmpty
 	private String content;
 	private Long hit;
 	private String reg_date;
