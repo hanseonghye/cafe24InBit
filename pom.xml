@@ -234,7 +234,7 @@
 					<password>manager</password>
 				</configuration>
 			</plugin>
-			
+			 
 		</plugins>
 	</build>
 </project>
