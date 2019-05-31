@@ -25,12 +25,13 @@ public class UserController {
 	private BlogService blogService;
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
-	public String join() {
+	public String join(@ModelAttribute UserVo userVo) {
 		return "user/join";
 	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String join(@ModelAttribute  @Valid UserVo vo, BindingResult result, Model model) {
+	public String join(@ModelAttribute("userVo")  @Valid UserVo vo, BindingResult result, Model model) {
+
 		if (result.hasErrors()) {
 			model.addAllAttributes(result.getModel());
 			return "user/join";
@@ -45,21 +46,6 @@ public class UserController {
 	public String login() {
 		return "user/login";
 	}
-
-//	@RequestMapping(value = "/login", method = RequestMethod.POST)
-//	public String login(@RequestParam(value = "id", required = true, defaultValue = "") String id,
-//			@RequestParam(value = "password", required = true, defaultValue = "") String password, HttpSession session,
-//			Model model) {
-//		UserVo authUser = userService.getUser(id, password);
-//
-//		if (authUser == null) {
-//			model.addAttribute("result", "fail");
-//			return "user/login";
-//		}
-//
-//		session.setAttribute("authUser", authUser);
-//		return "redirect:/"+id;
-//	}
 
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
