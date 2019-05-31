@@ -18,9 +18,12 @@
 				<c:choose>
 					<c:when test='${ authUser.id eq blog_id }'>
 						<li><a
-							href="${pageContext.servletContext.contextPath }/blog/${authUser.id}/admin/basic">블로그
+							href="${pageContext.servletContext.contextPath }/${authUser.id}/admin/basic">블로그
 								관리</a></li>
 					</c:when>
+					<c:otherwise>
+						<li><a href="${pageContext.request.contextPath}/${authUser.id}">내블로그 가기</a></li>
+					</c:otherwise>
 				</c:choose>
 			</c:otherwise>
 		</c:choose>

@@ -51,8 +51,10 @@ public class PostDao {
 		return postVo.get(0);
 	}
 
-	public PostVo getRecentOne(String blog_id, int category) {
+	public PostVo getRecentOne(String blog_id, long category) {
+		System.out.println("getrecentOne");
 		Map<String, String> map = new HashMap<String, String>();
+		map.put("blog_id",blog_id);
 		map.put("no",String.valueOf(category));
 		List<PostVo> postVo = sqlSession.selectList("post.getRecentOne", map);
 

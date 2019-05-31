@@ -8,7 +8,7 @@
 <c:choose>
 	<c:when test='${!empty authUser }'>
 		<li><a href="${pageContext.servletContext.contextPath }/user/logout">로그아웃</a></li>
-		<li><a href="${pageContext.servletContext.contextPath }/blog/${authUser.id}">내블로그</a></li>
+		<li><a href="${pageContext.servletContext.contextPath }/${authUser.id}">내블로그</a></li>
 	</c:when>
 	<c:otherwise>
 		<li><a href="${pageContext.servletContext.contextPath }/user/login">로그인</a></li>

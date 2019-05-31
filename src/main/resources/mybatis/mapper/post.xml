@@ -16,7 +16,7 @@
 	
 	<select id="getRecentOne" parameterType="map" resultType="postvo">
 		<![CDATA[
-			select p.title, p.content from post p, category c where p.cate_no=#{no} order by p.reg_date desc limit 1;
+			select p.title, p.content from post p, category c where c.no=#{no} and c.id=#{blog_id} and p.cate_no=#{no} order by p.reg_date desc limit 1;
 		]]>
 	</select>
 

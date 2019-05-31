@@ -15,7 +15,7 @@
 		<div id="wrapper">
 			<div id="content" class="full-screen">
 				<c:import url="/WEB-INF/views/blog/includes/admin-header.jsp" />
-				<form action="${pageContext.servletContext.contextPath }/blog/${authUser.id }/admin/write" method="post">
+				<form action="${pageContext.servletContext.contextPath }/${authUser.id }/admin/write" method="post">
 			      	<table class="admin-cat-write">
 			      		<tr>
 			      			<td class="t">제목</td>

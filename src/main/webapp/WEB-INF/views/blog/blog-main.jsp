@@ -31,7 +31,7 @@
 				
 				<ul class="blog-list">
 					<c:forEach items='${post }' var='post' varStatus='status'>
-						<li><a href="${pageContext.servletContext.contextPath }/blog/${blog.id}/${post.cate_no}/${post.no}">${post.title }</a> <span>${post.reg_date }</span></li>
+						<li><a href="${pageContext.servletContext.contextPath }/${blog.id}/${post.cate_no}/${post.no}">${post.title }</a> <span>${post.reg_date }</span></li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -47,7 +47,7 @@
 			<h2>카테고리</h2>
 			<ul>
 				<c:forEach items='${category }' var='cate' varStatus='status'>
-					<li><a href="${pageContext.servletContext.contextPath }/blog/${blog.id}/${cate.no}">${cate.name }</a></li>
+					<li><a href="${pageContext.servletContext.contextPath }/${blog.id}/${cate.no}">${cate.name }</a></li>
 				</c:forEach>
 
 			</ul>

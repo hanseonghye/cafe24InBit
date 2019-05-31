@@ -18,4 +18,9 @@ public class UserService {
 	public UserVo getUser(String id, String password) {
 		return userDao.get(id, password);
 	}
+
+	public Boolean existID(String id) {
+		UserVo vo =  userDao.get(id);
+		return vo != null;
+	}
 }

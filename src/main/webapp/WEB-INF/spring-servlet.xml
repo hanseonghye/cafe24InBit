@@ -41,7 +41,8 @@
 		</mvc:message-converters>
 
 	</mvc:annotation-driven>
-	<mvc:resources mapping="/images/**" location="file:/mysite-uploads/" />
+	<mvc:resources mapping="/images/**"
+		location="file:/mysite-uploads/" />
 
 
 	<!--2. 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->

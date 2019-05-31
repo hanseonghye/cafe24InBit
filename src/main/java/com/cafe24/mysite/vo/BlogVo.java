@@ -1,7 +1,11 @@
 package com.cafe24.mysite.vo;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class BlogVo {
 	private String id;
+	
+	@NotEmpty
 	private String title;
 	private String logo;
 	

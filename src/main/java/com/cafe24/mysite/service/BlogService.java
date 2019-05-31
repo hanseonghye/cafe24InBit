@@ -42,7 +42,7 @@ public class BlogService {
 	
 	public Model viewPost(Model model, String blog_id, long category_no, long post_no) {
 		BlogVo blogVo = getBlog(blog_id);
-		PostVo wantPost = getWantPost(blog_id, post_no);
+		PostVo wantPost = getWantPost(blog_id,category_no ,post_no);
 		List<CategoryVo> cateList = getCategory(blog_id);
 		List<PostVo> postList = getPost(blog_id, category_no);
 		model.addAttribute("category", cateList);
@@ -52,27 +52,6 @@ public class BlogService {
 		
 		return model;
 	}
-	
-//	public Model viewCategory(Model model, String blog_id, int category_no) {
-//		if ( blog_id == null) {
-//			model.addAttribute("category", null);
-//			model.addAttribute("post", null);
-//			model.addAttribute("blog", null);
-//			model.addAttribute("recentpost", null);
-//			return model;
-//		}
-//		
-//		BlogVo blogVo = getBlog(blog_id);
-//		PostVo recentOne = getRecentPost(blog_id, category_no);
-//		List<CategoryVo> cateList = getCategory(blog_id);
-//		List<PostVo> postList = getPost(blog_id, category_no);
-//		model.addAttribute("category", cateList);
-//		model.addAttribute("post", postList);
-//		model.addAttribute("blog", blogVo);
-//		model.addAttribute("recentpost", recentOne);
-//		
-//		return model;
-//	}
 
 	public Boolean createBlog(String id) {
 		return blogDao.insert(id);
@@ -93,7 +72,7 @@ public class BlogService {
 		return postDao.get(blog_id,category_no);
 	}
 
-	public PostVo getRecentPost(String blog_id, int category) {
+	public PostVo getRecentPost(String blog_id, long category) {
 		if ( category == 0L ) {
 			return postDao.getRecentOne(blog_id);
 		}
@@ -163,9 +142,12 @@ public class BlogService {
 		return categoryDao.add(vo);
 	}
 
-	public PostVo getWantPost(String blog_id, long post) {
-		if ( post == 0L ) {
+	public PostVo getWantPost(String blog_id,long category_no, long post) {
+		if ( category_no == 0L) {
 			return postDao.getRecentOne(blog_id);
+		}
+		if ( post == 0L ) {
+			return postDao.getRecentOne(blog_id, category_no);
 		}
 		return postDao.getWantPost(post);
 	}

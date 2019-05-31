@@ -6,8 +6,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <ul class="admin-menu">
-		<li><a href="${pageContext.servletContext.contextPath }/blog/${authUser.id}/admin/basic">기본설정</a></li>
-		<li><a href="${pageContext.servletContext.contextPath }/blog/${authUser.id}/admin/category">카테고리</a></li>
-		<li><a href="${pageContext.servletContext.contextPath }/blog/${authUser.id}/admin/write">글작성</a></li>
-		<li><a href="${pageContext.request.contextPath}/blog/${blog_id}">블로그 메인</a></li>
+		<li><a href="${pageContext.servletContext.contextPath }/${authUser.id}/admin/basic">기본설정</a></li>
+		<li><a href="${pageContext.servletContext.contextPath }/${authUser.id}/admin/category">카테고리</a></li>
+		<li><a href="${pageContext.servletContext.contextPath }/${authUser.id}/admin/write">글작성</a></li>
+		<li><a href="${pageContext.request.contextPath}/${blog_id}">블로그 메인</a></li>
 </ul>

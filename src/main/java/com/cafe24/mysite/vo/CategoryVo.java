@@ -1,8 +1,14 @@
 package com.cafe24.mysite.vo;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class CategoryVo {
 	private long no;
+	
+	@NotEmpty
 	private String name;
+	
+	@NotEmpty
 	private String description;
 	private String reg_date;
 	private String id;

@@ -32,7 +32,7 @@
 				}
 
 				$.ajax({
-					url : "${pageContext.servletContext.contextPath }/blog/${blog_id }/admin/addcategory",
+					url : "${pageContext.servletContext.contextPath }/${blog_id }/admin/addcategory",
 					type : "post",
 					dataType:"json",
 					data : {
@@ -70,7 +70,7 @@
 		}
 		
 		$.ajax({
-			url : "${pageContext.servletContext.contextPath }/blog/${blog_id}/admin/delete/"+id,
+			url : "${pageContext.servletContext.contextPath }/${blog_id}/admin/delete/"+id,
 			type : "post",
 			dataType : "json",
 			data :{},

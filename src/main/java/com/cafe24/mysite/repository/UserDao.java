@@ -24,6 +24,10 @@ public class UserDao {
 		return 1 == sqlSession.insert("user.insert", vo);
 	}
 
+	public UserVo get(String id) {
+		return sqlSession.selectOne("user.getByID", id);
+	}
+	
 	public UserVo get(String id, String password) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("id",id); 

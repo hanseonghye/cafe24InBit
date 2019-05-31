@@ -1,8 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!doctype html>
 <html>
 <head>
@@ -10,14 +9,21 @@
 <title>JBlog</title>
 <Link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/jblog.css">
+
+<script
+	src="${pageContext.servletContext.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
+<script>
+
+</script>
 </head>
+
 <body>
 	<div id="container">
 		<c:import url="/WEB-INF/views/blog/includes/header.jsp" />
 		<div id="wrapper">
 			<div id="content" class="full-screen">
 				<c:import url="/WEB-INF/views/blog/includes/admin-header.jsp" />
-				<form action="${pageContext.request.contextPath }/blog/${authUser.id}/admin/basic" method="post" enctype="multipart/form-data">
+				<form action="${pageContext.request.contextPath }/${authUser.id}/admin/basic" method="post" enctype="multipart/form-data">
 					<table class="admin-config">
 						<tr>
 							<td class="t">블로그 제목</td>
@@ -40,11 +46,7 @@
 				</form>
 			</div>
 		</div>
-		<div id="footer">
-			<p>
-				<strong>Spring 이야기</strong> is powered by JBlog (c)2016
-			</p>
-		</div>
+		<jsp:include page="/WEB-INF/views/blog/includes/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>

@@ -16,6 +16,12 @@
 		</selectKey>
 	</insert>
 
+	<select id="getByID" resultType="uservo" parameterType="string">
+		<![CDATA[
+			select id, name from user where id=#{id}
+		]]>
+	</select>
+
 	<select id="getByIDandPassword" resultType="uservo" parameterType="map">
 		<![CDATA[
 			select id, name from user where id=#{id} and password=#{password}
