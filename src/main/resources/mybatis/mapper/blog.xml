@@ -6,7 +6,7 @@
 		<![CDATA[
 			insert 
 				into blog
-			values(#{id}, "블로그입니다.","spring-logo.jpg")
+			values(#{id}, concat(#{id},"님의 블로그"), "spring-logo.jpg")
 		
 		]]>
 		<selectKey keyProperty="no" resultType="long" order="AFTER">

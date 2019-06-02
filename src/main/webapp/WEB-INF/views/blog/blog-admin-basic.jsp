@@ -14,6 +14,22 @@
 	src="${pageContext.servletContext.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
 <script>
 
+$(function(){
+	$("#logo-file").change(function(){
+		readURL(this);
+	})
+	
+	function readURL(input){
+		if(input.files && input.files[0]){
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#logo-img').attr('src',e.target.result);
+			}
+			
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+})
 </script>
 </head>
 
@@ -31,12 +47,20 @@
 						</tr>
 						<tr>
 							<td class="t">로고이미지</td>
-							<td><img
-								src="${pageContext.request.contextPath}${blog.logo }"></td>
+							<td>
+							<c:choose>
+								<c:when test='${blog.logo eq "spring-logo.jpg" }'>
+									<img id="logo-img" src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
+								</c:when>
+								<c:otherwise>
+									<img id="logo-img" src="${pageContext.request.contextPath}/${blog.logo }">
+								</c:otherwise>
+							</c:choose>
+							</td>
 						</tr>
 						<tr>
 							<td class="t">&nbsp;</td>
-							<td><input type="file" name="logo-file"></td>
+							<td><input type="file" id="logo-file" name="logo-file"></td>
 						</tr>
 						<tr>
 							<td class="t">&nbsp;</td>

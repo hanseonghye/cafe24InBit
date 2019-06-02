@@ -15,9 +15,9 @@
 <script
 	src="${pageContext.servletContext.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
 <script>
-console.log("11")
+
 $(function(){
-	console.log("Ddd")
+
 	$('#btn-checkemail').click(
 			function(){
 				var id = $('#id').val();
@@ -27,7 +27,7 @@ $(function(){
 				}
 				
 				$.ajax({
-					url : "${pageContext.servletContext.contextPath}/ss/api/checkid?id="+id,
+					url : "${pageContext.servletContext.contextPath}/user/api/checkid?id="+id,
 					type : "get",
 					dataType :"json",
 					data :"",
@@ -55,6 +55,7 @@ $(function(){
 </head>
 <body>
 	<div class="center-content">
+	<img src="${pageContext.request.contextPath}/assets/images/logo.jpg">
 		<h1 class="logo">JBlog</h1>
 		<ul class="menu">
 			<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
@@ -82,7 +83,7 @@ $(function(){
 			
 			<fieldset>
 				<legend>약관동의</legend>
-				<input id="agree-prov" type="checkbox" name="agreeProv" value="y">
+				<input id="agree-prov" type="checkbox" name="agreeProv" value="y", required="required">
 				<label class="l-float">서비스 약관에 동의합니다.</label>
 			</fieldset>
 

@@ -20,7 +20,7 @@
 		]]>
 	</select>
 
-	<select id="getWantOne" parameterType="int" resultType="postvo">
+	<select id="getWantOne" parameterType="long" resultType="postvo">
 		<![CDATA[
 			select title, content from post where no=#{no};
 		]]>
@@ -29,6 +29,12 @@
 	<select id="getRecentOneFromAll" parameterType="String" resultType="postvo">
 		<![CDATA[
 			select p.title, p.content from post p, category c where p.cate_no = c.no and c.id=#{blog_id} order by p.reg_date desc limit 1;
+		]]>
+	</select>
+	
+	<select id="getRecentOneByPostNo" parameterType="long" resultType="postvo">
+		<![CDATA[
+			select title, content from post where no=#{post_no};
 		]]>
 	</select>
 	

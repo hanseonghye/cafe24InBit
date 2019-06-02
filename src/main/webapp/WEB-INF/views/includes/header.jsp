@@ -1,4 +1,4 @@
-<%@page import="com.cafe24.mysite.vo.UserVo"%>
+<%@page import="com.cafe24.jblog.vo.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

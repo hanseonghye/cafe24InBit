@@ -11,6 +11,7 @@
 <script src="${pageContext.servletContext.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
 
 <script>
+
 </script>
 </head>
 <body>
@@ -39,7 +40,14 @@
 
 		<div id="extra">
 			<div class="blog-logo">
-				<img src="${pageContext.request.contextPath}${blog.logo }">
+				<c:choose>
+					<c:when test='${blog.logo eq "spring-logo.jpg" }'>
+						<img src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
+					</c:when>
+					<c:otherwise>
+						<img src="${pageContext.request.contextPath}/${blog.logo }">
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 
