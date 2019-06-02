@@ -69,19 +69,16 @@ $(function(){
 			<label class="block-label" for="id">아이디</label> 
 			
 			<form:input path="id"/>
+			<button id="btn-checkemail" type="button">id 중복체크</button>
 			<p style="color:red; text-align:left; padding:0; margin:0;">
 				<form:errors path="id"/>
 			</p>
-			<button id="btn-checkemail" type="button">id 중복체크</button>
-			<img id="img-checkemail" style="display: none;"
-				src="${pageContext.request.contextPath}/assets/images/check.png">
 
 			<label class="block-label" for="password">패스워드</label> 
 			<form:password path="password"/>
 			<p style="color:red; text-align:left; padding:0; margin:0;">
 				<form:errors path="password"/>
 			</p>
-			
 			
 			<fieldset>
 				<legend>약관동의</legend>
