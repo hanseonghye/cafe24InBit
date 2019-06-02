@@ -27,7 +27,7 @@ $(function(){
 				}
 				
 				$.ajax({
-					url : "${pageContext.servletContext.contextPath}/ss/api/checkid?id="+id,
+					url : "${pageContext.servletContext.contextPath}/user/api/checkid?id="+id,
 					type : "get",
 					dataType :"json",
 					data :"",
@@ -84,7 +84,7 @@ $(function(){
 			
 			<fieldset>
 				<legend>약관동의</legend>
-				<input id="agree-prov" type="checkbox" name="agreeProv" value="y">
+				<input id="agree-prov" type="checkbox" name="agreeProv" value="y", required="required">
 				<label class="l-float">서비스 약관에 동의합니다.</label>
 			</fieldset>
 

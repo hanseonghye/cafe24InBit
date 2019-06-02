@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cafe24.jblog.dto.JSONResult;
 import com.cafe24.jblog.service.BlogService;
 import com.cafe24.jblog.service.UserService;
 import com.cafe24.jblog.vo.UserVo;
@@ -52,6 +54,13 @@ public class UserController {
 			@RequestParam(value = "password", required = true, defaultValue = "") String password, HttpSession session,
 			Model model) {
 		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = { "/api/checkid" }, method = RequestMethod.GET)
+	public JSONResult checkId(@RequestParam(value = "id", required = true, defaultValue = "") String id) {
+		Boolean exist = userService.existID(id);
+		return JSONResult.success("OK", exist);
 	}
 
 

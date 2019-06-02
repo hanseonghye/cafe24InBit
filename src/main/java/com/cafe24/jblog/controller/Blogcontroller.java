@@ -116,11 +116,4 @@ public class Blogcontroller {
 		return JSONResult.success("OK", cateList);
 	}
 
-	@ResponseBody
-	@RequestMapping(value = { "/api/checkid" }, method = RequestMethod.GET)
-	public JSONResult checkId(@RequestParam(value = "id", required = true, defaultValue = "") String id) {
-		Boolean exist = userService.existID(id);
-		return JSONResult.success("OK", exist);
-	}
-
 }
