@@ -8,9 +8,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JBlog</title>
 <Link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
+
+<script src="${pageContext.servletContext.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
+
+<script>
+
+</script>
+
 </head>
 <body>
 	<div class="center-content">
+		<img src="${pageContext.request.contextPath}/assets/images/logo.jpg">
 		<h1 class="logo">JBlog</h1>
 		<ul class="menu">
 		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>

@@ -10,7 +10,7 @@
 	
 	<select id="getAllbyid" resultType="categoryvo" parameterType="String">
 		<![CDATA[
-			select * from ( select c.no, c.id, c.name, c.description, IFNULL(count(p.no),0) as count from category as c left join post as p on c.id=#{id} and p.cate_no = c.no group by c.name order by c.name ) as cate where cate.id = #{id} order by cate.name;
+			select * from ( select c.no, c.id, c.name, c.description, IFNULL(count(p.no),0) as count from category as c left join post as p on c.id=#{id} and p.cate_no = c.no group by c.id, c.name order by c.name ) as cate where cate.id = #{id} order by cate.name;
 		]]>
 	</select>
 	

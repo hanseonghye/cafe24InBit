@@ -2,10 +2,10 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="uservo" type="com.cafe24.mysite.vo.UserVo"/>
-		<typeAlias alias="blogvo" type="com.cafe24.mysite.vo.BlogVo"/>
-		<typeAlias alias="postvo" type="com.cafe24.mysite.vo.PostVo"/>
-		<typeAlias alias="categoryvo" type="com.cafe24.mysite.vo.CategoryVo"/>
+		<typeAlias alias="uservo" type="com.cafe24.jblog.vo.UserVo"/>
+		<typeAlias alias="blogvo" type="com.cafe24.jblog.vo.BlogVo"/>
+		<typeAlias alias="postvo" type="com.cafe24.jblog.vo.PostVo"/>
+		<typeAlias alias="categoryvo" type="com.cafe24.jblog.vo.CategoryVo"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mapper/user.xml" />

@@ -37,12 +37,11 @@
 					</list>
 				</property>
 			</bean>
-
 		</mvc:message-converters>
 
 	</mvc:annotation-driven>
 	<mvc:resources mapping="/images/**"
-		location="file:/mysite-uploads/" />
+		location="file:/jblog-uploads/" />
 
 
 	<!--2. 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
@@ -63,7 +62,7 @@
 
 	<!--5. controller scanning 하는 base package -->
 	<context:component-scan
-		base-package="com.cafe24.mysite.controller" />
+		base-package="com.cafe24.jblog.controller" />
 
 	<!-- 6. MessageSource -->
 	<bean id="messageSource"
@@ -86,5 +85,18 @@
 		<property name="defaultEncoding" value="utf-8" />
 	</bean>
 
-
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/auth"/>
+			<bean class="com.cafe24.security.AuthLoginInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/logout"/>
+			<bean class="com.cafe24.security.AuthLogoutInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/*/admin/**"/>
+			<bean class="com.cafe24.security.BlogAdminInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

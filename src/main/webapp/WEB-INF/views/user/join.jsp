@@ -15,9 +15,9 @@
 <script
 	src="${pageContext.servletContext.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
 <script>
-console.log("11")
+
 $(function(){
-	console.log("Ddd")
+
 	$('#btn-checkemail').click(
 			function(){
 				var id = $('#id').val();
@@ -55,6 +55,7 @@ $(function(){
 </head>
 <body>
 	<div class="center-content">
+	<img src="${pageContext.request.contextPath}/assets/images/logo.jpg">
 		<h1 class="logo">JBlog</h1>
 		<ul class="menu">
 			<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
@@ -69,12 +70,10 @@ $(function(){
 			<label class="block-label" for="id">아이디</label> 
 			
 			<form:input path="id"/>
+			<button id="btn-checkemail" type="button">id 중복체크</button>
 			<p style="color:red; text-align:left; padding:0; margin:0;">
 				<form:errors path="id"/>
 			</p>
-			<button id="btn-checkemail" type="button">id 중복체크</button>
-			<img id="img-checkemail" style="display: none;"
-				src="${pageContext.request.contextPath}/assets/images/check.png">
 
 			<label class="block-label" for="password">패스워드</label> 
 			<form:password path="password"/>
