@@ -151,12 +151,18 @@ public class BlogService {
 	}
 
 	public PostVo getWantPost(String blog_id,long category_no, long post) {
+		if (post == 0L ) {
+			if (category_no == 0L) {
+				return postDao.getRecentOne(blog_id);
+			}else {
+				return postDao.getRecentOne(blog_id, category_no);
+			}
+		}
+		
 		if ( category_no == 0L) {
-			return postDao.getRecentOne(blog_id);
+			return postDao.getRecentOneByPostNo(post);
 		}
-		if ( post == 0L ) {
-			return postDao.getRecentOne(blog_id, category_no);
-		}
+		
 		return postDao.getWantPost(post);
 	}
 

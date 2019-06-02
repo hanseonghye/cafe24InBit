@@ -87,4 +87,8 @@ public class PostDao {
 		return 1 == sqlSession.delete("post.delete",category_no);
 	}
 
+	public PostVo getRecentOneByPostNo(long post_no) {
+		return sqlSession.selectOne("post.getRecentOneByPostNo", post_no);
+	}
+
 }
