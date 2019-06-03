@@ -5,8 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.cafe24.jblog.service.UserService;
@@ -20,12 +18,9 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("??????");
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		
-//		ApplicationContext ac = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
-//		userService = ac.getBean(UserService.class);
 
 		UserVo authUser = userService.getUser(id, password);
 

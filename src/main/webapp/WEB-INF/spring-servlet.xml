@@ -40,14 +40,15 @@
 		</mvc:message-converters>
 
 	</mvc:annotation-driven>
+	
 	<mvc:resources mapping="/images/**"
 		location="file:/jblog-uploads/" />
 
-<context:annotation-config />
+	<context:annotation-config />
+	
 	<!--2. 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
 	<mvc:default-servlet-handler />
-	<!-- <c:reso location="file/" -->
-
+	
 	<!--3. ViewResolver 설정 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -57,12 +58,6 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<!--4. 빈설정을 어노테이션으로 하겠다. (@Controller에 auto scan) -->
-	
-	
-	
-
-	<!--5. controller scanning 하는 base package -->
 	<context:component-scan
 		base-package="com.cafe24.jblog.controller" />
 
