@@ -43,7 +43,7 @@
 	<mvc:resources mapping="/images/**"
 		location="file:/jblog-uploads/" />
 
-
+<context:annotation-config />
 	<!--2. 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
 	<mvc:default-servlet-handler />
 	<!-- <c:reso location="file/" -->
@@ -58,7 +58,9 @@
 	</bean>
 
 	<!--4. 빈설정을 어노테이션으로 하겠다. (@Controller에 auto scan) -->
-	<context:annotation-config />
+	
+	
+	
 
 	<!--5. controller scanning 하는 base package -->
 	<context:component-scan
@@ -96,6 +98,7 @@
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/*/admin/**"/>
+			<mvc:exclude-mapping path="assets/**" />
 			<bean class="com.cafe24.security.BlogAdminInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

@@ -17,7 +17,7 @@
 		<ul class="menu">
 		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 		</ul>
-		<form class="login-form" method="post" action="${pageContext.servletContext.contextPath }/user/auth">
+		<form class="login-form" method='post' action="${pageContext.servletContext.contextPath }/user/auth">
       		<label>아이디</label> <input type="text" name="id">
       		<label>패스워드</label> <input type="text" name="password">
       		<input type="submit" value="로그인">

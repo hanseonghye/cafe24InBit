@@ -53,7 +53,6 @@ public class UserController {
 	public void auth(@RequestParam(value = "id", required = true, defaultValue = "") String id,
 			@RequestParam(value = "password", required = true, defaultValue = "") String password, HttpSession session,
 			Model model) {
-		
 	}
 	
 	@ResponseBody

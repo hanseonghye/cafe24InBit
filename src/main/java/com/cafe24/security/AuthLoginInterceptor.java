@@ -20,17 +20,18 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-
+		System.out.println("??????");
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-
-		ApplicationContext ac = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
-		userService = ac.getBean(UserService.class);
+		
+//		ApplicationContext ac = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
+//		userService = ac.getBean(UserService.class);
 
 		UserVo authUser = userService.getUser(id, password);
+
 		if(authUser==null) {
-			response.sendRedirect(request.getContextPath()+"/user/login");
-			return false;
+				response.sendRedirect(request.getContextPath()+"/user/login");
+				return false;
 		}
 		
 		//세션 처리
@@ -38,7 +39,6 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 		session.setAttribute("authUser",authUser);
 		response.sendRedirect(request.getContextPath());
 		return false;
-		
 	}
 
 }

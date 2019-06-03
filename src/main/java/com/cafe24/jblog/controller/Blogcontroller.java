@@ -24,7 +24,7 @@ import com.cafe24.jblog.vo.CategoryVo;
 import com.cafe24.jblog.vo.PostVo;
 
 @Controller
-@RequestMapping("/{id:(?!assets|images).*}")
+@RequestMapping("/{id:(?!assets|images|user).*}")
 public class Blogcontroller {
 
 	@Autowired
@@ -43,6 +43,7 @@ public class Blogcontroller {
 		model.addAttribute("blog_id", blog_id);
 		return "blog/blog-main";
 	}
+
 
 	@RequestMapping(value = { "/admin/basic" }, method = RequestMethod.GET)
 	public String basic(@PathVariable(value = "id") String blog_id, Model model) {
