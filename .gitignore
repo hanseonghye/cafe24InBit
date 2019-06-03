@@ -1,2 +1,6 @@
 /.project
 /.settings/
+/springboot-mysite/.classpath
+/springboot-mysite/.project
+/springboot-mysite/.settings/
+/springboot-mysite/target/
