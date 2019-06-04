@@ -7,7 +7,7 @@
 		<artifactId>jblog-study</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>jblog-stydy-jblog2</artifactId>
+	<artifactId>jblog-study-jblog2</artifactId>
 	<packaging>war</packaging>
 
 	<properties>
