@@ -2,13 +2,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<artifactId>jblog-study-jblog2</artifactId>
+	<packaging>war</packaging>
+
 	<parent>
 		<groupId>com.cafe24</groupId>
 		<artifactId>jblog-study</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>jblog-study-jblog2</artifactId>
-	<packaging>war</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -202,7 +203,7 @@
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
 					<url>http://127.0.0.1:8080/manager/text</url>
-					<path>/mysite2</path>
+					<path>/jblog-study-jblog2</path>
 					<username>admin</username>
 					<password>manager</password>
 				</configuration>
