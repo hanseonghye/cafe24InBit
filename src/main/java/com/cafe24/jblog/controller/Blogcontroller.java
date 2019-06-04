@@ -29,14 +29,16 @@ public class Blogcontroller {
 
 	@Autowired
 	private BlogService blogService;
-
 	@Autowired
-	UserService userService;
+	private UserService userService;
 		
 	@RequestMapping(value = { "", "/", "/{category}", "/{category}/{post}" }, method = RequestMethod.GET)
 	public String viewPost(@PathVariable(value = "id") String blog_id,
 			@PathVariable(value = "category") Optional<Long> _category,
 			@PathVariable(value = "post") Optional<Long> _post, Model model) {
+		if ( userService.existID(blog_id) == false ) {
+			return "blog/blog-notMember";
+		}
 		Long category = _category.isPresent() ? _category.get() : 0L;
 		Long post = _post.isPresent() ? _post.get() : 0L;
 		model = blogService.viewPost(model, blog_id, category, post);

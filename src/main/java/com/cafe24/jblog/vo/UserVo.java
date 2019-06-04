@@ -1,14 +1,11 @@
 package com.cafe24.jblog.vo;
 
-import javax.validation.constraints.Pattern;
-
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class UserVo {
 	@NotEmpty
 	@Length(min=3, max=20)
-	@Pattern(regexp = "(?!user)")
 	private String id;
 	
 	@NotEmpty
