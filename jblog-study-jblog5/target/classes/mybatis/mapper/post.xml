@@ -8,9 +8,9 @@
 		]]>
 	</select>
 
-	<select id="get" resultType="postvo" parameterType="map">
+	<select id="get" resultType="postvo" parameterType="postvo">
 		<![CDATA[
-			select p.title, p.reg_date, p.no, p.cate_no from post p, category c where c.id=#{blog_id} and c.no=#{cate_no} and p.cate_no = c.no order by p.reg_date desc;
+			select p.title, p.reg_date, p.no, p.cate_no from post p, category c where c.id=#{blog_id} and c.no=#{no} and p.cate_no = c.no order by p.reg_date desc;
 		]]>
 	</select>
 	

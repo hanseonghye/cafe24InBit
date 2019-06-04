@@ -20,8 +20,9 @@ public class PostDao {
 	}
 
 	public List<PostVo> get(String blog_id, long category_no) {
-		PostVo vo = new PostVo();
-		vo.
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("blog_id",blog_id);
+		map.put("no",String.valueOf(category_no));
 		List<PostVo> postVo = sqlSession.selectList("post.get", map);
 
 		if (postVo.isEmpty() == true) {
