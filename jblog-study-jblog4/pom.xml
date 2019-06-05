@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>jblog-study-jblog4</artifactId>
 	<packaging>war</packaging>
-	
+
 	<parent>
 		<groupId>com.cafe24</groupId>
 		<artifactId>jblog-study</artifactId>
@@ -73,7 +73,7 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.2.0.Final</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
@@ -150,7 +150,7 @@
 
 	</dependencies>
 
-<profiles>
+	<profiles>
 		<profile>
 			<id>production</id>
 			<build>
