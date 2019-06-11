@@ -27,7 +27,7 @@ public class BoardDao {
 	public List<BoardVo> getList(long countTop, long count) {
 		Map<String,Object> map =new HashMap<String,Object>();
 		map.put("counttop",countTop);
-		map.put("count",count);
+		map.put("count",countTop+count);
 		List<BoardVo> result = sqlSession.selectList("board.getlist",map);
 		
 		return result;

@@ -39,7 +39,7 @@
 									dataType : "json",
 									data : "",
 									success : function(response) {
-										console.dir(response)
+										
 										if (response.result != "success") {
 											console.error(response.message);
 											return;
@@ -51,6 +51,7 @@
 											$("#email").val("");
 											return;
 										}
+										
 										if (response.data == false) {
 											$('#check-button').hide();
 											$('#check-image').show();
@@ -58,7 +59,6 @@
 									},
 									error : function(xhr, error) {
 										console.error(error);
-
 									}
 								})
 
@@ -101,7 +101,8 @@
 						<form:errors path="email"/>
 					</p>
 					<label class="block-label">패스워드</label> 
-					<!-- <input name="password"
+					<!-- 
+						<input name="password"
 						type="password" value="" required>
  					-->
  					<form:password path="password"/>
