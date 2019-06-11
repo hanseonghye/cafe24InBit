@@ -45,7 +45,7 @@
 	<select id="getlist" resultType="boardvo" parameterType="map">
 		<![CDATA[
 			select b.no, b.title,b.user_no, u.name, b.hit, b.reg_date, b.group_no, b.order_no, b.depth, b.status
-			from board b, member u
+			from board b, user u
 			where ( b.user_no=u.no )
 			order by b.group_no desc, b.order_no asc
 		]]>
@@ -54,7 +54,7 @@
 	<select id="getlist2" resultType="boardvo" parameterType="map">
 		<![CDATA[
 			select b.no, b.title,b.user_no, u.name, b.hit, b.reg_date, b.group_no, b.order_no, b.depth, b.status
-			from board b, member u
+			from board b, user u
 			where ( b.user_no=u.no )
 			order by b.group_no desc, b.order_no asc
 			limit #{counttop}, #{count}
@@ -63,7 +63,7 @@
 	
 	<select id="getTotalSearchCount" resultType="long" parameterType="string">
 		select count(*)
-				from board b, member u
+				from board b, user u
 				where ( b.title like CONCAT('%', #{kwd}, '%')
 						or b.content like CONCAT('%', #{kwd}, '%')
 					) and (b.user_no = u.no ) and (status = 'LIVE')
@@ -72,7 +72,7 @@
 	<select id="getsearch" resultType="boardvo" parameterType="map">
 		<![CDATA[
 			select b.no, b.title, u.name, b.hit, b.reg_date, b.group_no, b.order_no, b.depth, b.status
-			from board b, member u
+			from board b, user u
 			where ( b.title like CONCAT('%', #{kwd}, '%')
 					or b.content like CONCAT('%', #{kwd}, '%')
 				) and (b.user_no = u.no ) and (status = 'LIVE')
@@ -91,7 +91,7 @@
 	<select id="getByNo" resultType="boardvo" parameterType="long">
 		<![CDATA[
 			select b.no, b.title, b.content,b.user_no, u.name, b.hit, b.reg_date, b.group_no, b.order_no, b.status
-			from board b, member u
+			from board b, user u
 			where b.no=#{no}
 				and b.user_no = u.no
 				
