@@ -6,12 +6,12 @@
 		<![CDATA[
 			insert 
 				into member
-			values(default, now(), #{name}, #{email}, #{password}, #{gender})
+			values(null, now(), #{name}, #{email}, #{password}, #{gender})
 		
 		]]>
 		<selectKey keyProperty="no" resultType="long" order="AFTER">
 			<![CDATA[
-				select currval('member_no_seq')
+				select last_insert_id()
 			]]>
 		</selectKey>
 	</insert>

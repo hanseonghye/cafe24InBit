@@ -4,7 +4,7 @@
 <mapper namespace="guestbook">
 	<select id="getlist" resultType="guestbookvo">
 	<![CDATA[	
-		select no, name, contents, date_format(reg_date, '%Y-%m-%d %H:%i:%s') as "regDate" from guestbook order by reg_date desc
+		select no, name, contents, reg_date as "regDate" from guestbook order by reg_date desc
 	]]>
 	</select>
 	
@@ -12,7 +12,7 @@
 		<![CDATA[
 			insert
 				into guestbook
-				values(null, #{name}, #{password}, #{contents}, now())
+				values(default, #{name}, #{password}, #{contents}, now())
 		]]>
 	</insert>
 	

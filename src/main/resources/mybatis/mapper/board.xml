@@ -6,7 +6,7 @@
 		<![CDATA[
 			insert 
 				into board
-			values(default, #{content}, 0, now(), #{title}, #{user_no}, (SELECT coalesce(MAX(group_no) + 1, 1) FROM board b), 1, 0,'LIVE')
+			values(null, #{content}, 0, now(), #{title}, #{user_no}, (SELECT IFNULL(MAX(group_no) + 1, 1) FROM board b), 1, 0,'LIVE')
 		
 		]]>
 	</insert>
@@ -15,7 +15,7 @@
 		<![CDATA[
 			insert
 				into board
-				values(default,#{content},0,now(),#{title},#{user_no},
+				values(null,#{content},0,now(),#{title},#{user_no},
 						(SELECT b.group_no FROM board b WHERE b.no =#{parent_no}),
 						(SELECT b.order_no+1 FROM board b WHERE b.no =#{parent_no}),
 						(SELECT b.depth+1 FROM board b WHERE b.no =#{parent_no})
@@ -24,7 +24,7 @@
 
 		<selectKey keyProperty="no" resultType="long" order="AFTER">
 			<![CDATA[
-				select currval('board_no_seq')
+				select last_insert_id()
 			]]>
 		</selectKey>
 
@@ -57,7 +57,7 @@
 			from board b, member u
 			where ( b.user_no=u.no )
 			order by b.group_no desc, b.order_no asc
-			limit #{counttop} offset #{count}
+			limit #{counttop}, #{count}
 		]]>
 	</select>
 	
