@@ -109,7 +109,7 @@
 	<update id="updateBydelete" parameterType="long">
 		<![CDATA[
 			update board
-				set title="삭제된 글입니다", content="글쓴이에 의해 삭제됐습니다", status='DIE'
+				set title='삭제된 글입니다', content='글쓴이에 의해 삭제됐습니다', status='DIE'
 			where no=#{no}
 		]]>
 	</update>
