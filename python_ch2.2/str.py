@@ -46,3 +46,11 @@ print(str4[:-3:-1])
 str5 = "ABCDEFG"
 print('F' in str5)
 print('s' not in str5)
+
+name = "길동"
+age = 40
+print("name:" + name + ",age:" + format(age, "d"))
+print("name:" + format(name, "s") + ",age:" + format(age, "d"))
+
+f = 'name: %s, age: %d'
+print(f % (name, age))
