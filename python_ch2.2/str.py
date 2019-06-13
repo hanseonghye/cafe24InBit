@@ -54,3 +54,7 @@ print("name:" + format(name, "s") + ",age:" + format(age, "d"))
 
 f = 'name: %s, age: %d'
 print(f % (name, age))
+
+f = "name: %(n)s, age:%(a)d"
+print(f % {'n': '둘리', 'a': 10})
+print(f % {'n': 20, 'a': 10})
