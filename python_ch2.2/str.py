@@ -41,3 +41,8 @@ print(str4[1::-1])  # 1,2번째 문자
 print(str4[1:0])
 print(str4[1:0:-1])
 print(str4[:-3:-1])
+
+# in, not in 연산
+str5 = "ABCDEFG"
+print('F' in str5)
+print('s' not in str5)
