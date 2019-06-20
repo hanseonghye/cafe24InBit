@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="58d27f19-c260-4d6e-b205-b522b41006d7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helloworld/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/helloworld/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/장고 설정.txt" beforeDir="false" afterPath="$PROJECT_DIR$/docs/장고 설정.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helloworld/templates/helloworld/hello.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_ch3/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_ch3/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_ch3/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_ch3/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +21,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/docs/장고 설정.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1406">
-                  <caret line="74" selection-start-line="74" selection-end-line="74" />
+                <state relative-caret-position="340">
+                  <caret line="91" column="34" selection-start-line="91" selection-start-column="7" selection-end-line="91" selection-end-column="42" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/python_ch3/settings.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="190">
+                  <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
                 </state>
               </provider>
             </entry>
@@ -27,8 +39,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/python_ch3/urls.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="342">
-                  <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
+                <state relative-caret-position="475">
+                  <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
                   <folding>
                     <element signature="e#634#666#0" expanded="true" />
                   </folding>
@@ -36,11 +48,29 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/helloworld/templates/helloworld/hello.html">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/emaillist/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="19">
-                  <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+                <state relative-caret-position="152">
+                  <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/templates/emaillist/form.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="380">
+                  <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/emaillist/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret selection-end-column="15" />
                 </state>
               </provider>
             </entry>
@@ -54,15 +84,33 @@
               </provider>
             </entry>
           </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/emaillist/models.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="19">
+                  <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+        <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/helloworld/views.py">
+            <entry file="file://$PROJECT_DIR$/docs/장고 설정.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="76">
-                  <caret line="4" column="51" lean-forward="true" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+                <state relative-caret-position="373">
+                  <caret line="104" column="50" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/emaillist/admin.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="32" selection-start-column="32" selection-end-column="32" />
                 </state>
               </provider>
             </entry>
@@ -78,6 +126,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>temp</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -85,19 +138,24 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/장고 설정.txt" />
-        <option value="$PROJECT_DIR$/python_ch3/settings.py" />
-        <option value="$PROJECT_DIR$/docs/장고 설정.txt" />
-        <option value="$PROJECT_DIR$/helloworld/templates/helloworld/hello.html" />
-        <option value="$PROJECT_DIR$/python_ch3/urls.py" />
         <option value="$PROJECT_DIR$/helloworld/views.py" />
+        <option value="$PROJECT_DIR$/helloworld/templates/helloworld/hello.html" />
+        <option value="$PROJECT_DIR$/python_ch3/settings.py" />
+        <option value="$PROJECT_DIR$/emaillist/models.py" />
+        <option value="$PROJECT_DIR$/emaillist/admin.py" />
+        <option value="$PROJECT_DIR$/docs/장고 설정.txt" />
+        <option value="$PROJECT_DIR$/python_ch3/urls.py" />
+        <option value="$PROJECT_DIR$/emaillist/views.py" />
+        <option value="$PROJECT_DIR$/templates/emaillist/index.html" />
+        <option value="$PROJECT_DIR$/templates/emaillist/form.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="251" />
-    <option name="y" value="64" />
-    <option name="width" value="1400" />
-    <option name="height" value="1100" />
+    <option name="x" value="285" />
+    <option name="y" value="65" />
+    <option name="width" value="1440" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -107,6 +165,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -117,19 +176,34 @@
             <path>
               <item name="python_ch3" type="b2602c69:ProjectViewProjectNode" />
               <item name="python_ch3" type="462c0819:PsiDirectoryNode" />
-              <item name="helloworld" type="462c0819:PsiDirectoryNode" />
+              <item name="emaillist" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="python_ch3" type="b2602c69:ProjectViewProjectNode" />
               <item name="python_ch3" type="462c0819:PsiDirectoryNode" />
               <item name="helloworld" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="python_ch3" type="b2602c69:ProjectViewProjectNode" />
               <item name="python_ch3" type="462c0819:PsiDirectoryNode" />
-              <item name="helloworld" type="462c0819:PsiDirectoryNode" />
+              <item name="python_ch3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python_ch3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python_ch3" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python_ch3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python_ch3" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="emaillist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python_ch3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python_ch3" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="helloworld" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="python_ch3" type="b2602c69:ProjectViewProjectNode" />
@@ -146,15 +220,19 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/emaillist" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\hsh\git\PycharmProjects\python_ch3\templates\emaillist" />
+      <recent name="D:\hsh\git\PycharmProjects\python_ch3" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\hsh\git\PycharmProjects\python_ch3\docs" />
       <recent name="D:\hsh\git\PycharmProjects\python_ch3\python_ch3" />
@@ -190,7 +268,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14712153" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15351813" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -215,12 +293,15 @@
     <entry file="file://$PROJECT_DIR$/helloworld/models.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/장고 설정.txt">
+    <entry file="file://$PROJECT_DIR$/helloworld/templates/helloworld/hello.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1406">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
+        <state relative-caret-position="285">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helloworld/migrations/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -229,34 +310,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_ch3/urls.py">
+    <entry file="file://$PROJECT_DIR$/emaillist/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
-          <folding>
-            <element signature="e#634#666#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="32" selection-start-column="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/helloworld/hello.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/장고 설정.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="91" column="34" selection-start-line="91" selection-start-column="7" selection-end-line="91" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emaillist/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/helloworld/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
-          <caret line="4" column="51" lean-forward="true" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+          <caret line="4" column="38" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/python_ch3/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-715">
-          <caret line="61" column="59" lean-forward="true" selection-start-line="61" selection-start-column="59" selection-end-line="61" selection-end-column="59" />
+        <state relative-caret-position="190">
+          <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helloworld/templates/helloworld/hello.html">
+    <entry file="file://$PROJECT_DIR$/python_ch3/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="475">
+          <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
+          <folding>
+            <element signature="e#634#666#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emaillist/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/emaillist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/emaillist/form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
         </state>
       </provider>
     </entry>
