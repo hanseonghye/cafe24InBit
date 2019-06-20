@@ -9,4 +9,4 @@ class Emaillist(models.Model):
     email = models.CharField(max_length=200)
 
     def __str__(self):
-        return f'Emaillist( {self.first_name}, {self.last_name} )'
+        return f'Emaillist( {self.first_name}, {self.last_name},{self.email})'
