@@ -7,7 +7,6 @@ from guestbook.models import Guestbook
 
 def index(request):
     guestbook_list = Guestbook.objects.all().order_by('-id')
-    print(guestbook_list)
     data = {"guestbook_list": guestbook_list}
     return render(request, "guestbook/list.html", data)
 

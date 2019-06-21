@@ -63,20 +63,13 @@
 
         {% for board in board_list %}
         <tr>
-            <td>{{ board.id }}</td>
-            {% if board.depth == 0 %}
-            <td style="text-align: left;"><a href="/board/view/{{ board.id }}">{{ board.title }}</a></td>
-            {% else %}
-            <td style="text-align: left; padding-left:{{board.depth | mul:20}}px"><img src="/assets/images/reply.png"><a
-                    href="/board/view/{{ board.id }}">{{ board.title }}</a></td>
-            {% endif %}
-            <td>{{ board.user.name }}</td>
-            <td>{{ board.hit }}</td>
-            <td>{{ board.regdate | date:'Y-m-d H:i:s'}}</td>
             {% if board.status %}
+                <td>{{ board.id }}</td>
+                <td style="text-align: left;"><a href="/board/view/{{ board.id }}">{{ board.title }}</a></td>
+                <td>{{ board.user.name }}</td>
+                <td>{{ board.hit }}</td>
+                <td>{{ board.regdate | date:'Y-m-d H:i:s'}}</td>
                 <td><a href="/board/delete/{{ board.id }}" class="del">삭제</a></td>
-            {% else %}
-                <td> </td>
             {% endif %}
         </tr>
         {% endfor %}

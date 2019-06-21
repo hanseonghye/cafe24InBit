@@ -16,15 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-import  emaillist.views as emaillist_views
+import emaillist.views as emaillist_views
 import helloworld.views as helloworld_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', helloworld_views.hello),
     path('helloworld/', helloworld_views.hello),
     path('emaillist/', emaillist_views.index),
     path('emaillist/form', emaillist_views.form),
     path('emaillist/add', emaillist_views.add),
-    path('helloworld/hello', emaillist_views.hello),
-    path('helloworld/hello2/<int:id>', emaillist_views.hello2),
+    path('helloworld/hello', helloworld_views.hello),
+    path('helloworld/hello2/<int:id>', helloworld_views.hello2),
+    path('helloworld/hello3/', helloworld_views.hello3),
+    path('helloworld/counter/max', helloworld_views.counter_max),
+    path('helloworld/counter/add', helloworld_views.counter_add),
 ]

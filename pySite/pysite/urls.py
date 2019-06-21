@@ -18,10 +18,11 @@ from django.urls import path
 import main.views as main_views
 import user.views as user_views
 import guestbook.views as guestbook_views
+import board.views as board_views
 
 urlpatterns = [
     path('', main_views.index),
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
 
     path('user/loginform', user_views.loginform),
     path('user/login', user_views.login),
@@ -29,10 +30,26 @@ urlpatterns = [
     path('user/join', user_views.join),
     path('user/joinsuccess', user_views.joinsuccess),
     path('user/logout', user_views.logout),
+    path('user/updateform', user_views.updateform),
     path('user/update', user_views.update),
+    path('user/api/checkemail', user_views.checkemail),
 
     path('guestbook/', guestbook_views.index),
     path('guestbook/write', guestbook_views.write),
     path('guestbook/deleteform/<int:id>', guestbook_views.deleteform),
     path('guestbook/delete/<int:id>', guestbook_views.delete),
+
+    path('board/',board_views.index),
+    path('board/list/<int:no>',board_views.index),
+    path('board/view/<int:id>',board_views.view),
+    path('board/writeform',board_views.writeform),
+    path('board/write',board_views.write),
+    path('board/modifyform/<int:id>',board_views.modifyform),
+    path('board/modify/<int:id>',board_views.modify),
+    path('board/delete/<int:id>',board_views.delete),
+    path('board/writereplyform/<int:id>',board_views.writereplyform),
+    path('board/writereply/<int:id>',board_views.writereply),
 ]
+
+
+board_views.init()
