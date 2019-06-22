@@ -26,8 +26,12 @@
     </table>
     <div class="bottom">
         <a href="/board">글목록</a>
-        <a href="/board/modifyform/{{board.id}}">글수정</a>
-        <a href="/board/writereplyform/{{board.id}}">답글</a>
+        {% if request.session.authuser is not none %}
+            <a href="/board/writereplyform/{{board.id}}">답글</a>
+            {% if request.session.authuser.id == board.user.id %}
+                <a href="/board/modifyform/{{board.id}}">글수정</a>
+            {% endif %}
+        {% endif %}
     </div>
 </div>
 {% endblock %}

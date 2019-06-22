@@ -14,3 +14,6 @@ class Board(models.Model):
     depth = models.IntegerField(default=0)
     user = models.ForeignKey(User, to_field='id', on_delete=models.CASCADE)
     status = models.BooleanField(default=True)
+
+    def __srt__(self):
+        return f'Board : {self.title}, {self.content}, {self.user.name}'

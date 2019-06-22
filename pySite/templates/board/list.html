@@ -3,10 +3,6 @@
 
 {% block csslink %}
 <link href="/assets/css/board.css" rel="stylesheet" type="text/css">
-<script src="/assets/js/jquery/jquery-1.9.0.js"></script>
-<script>
-
-</script>
 {% endblock %}
 
 {% block content %}
@@ -55,7 +51,7 @@
     <div class="pager">
          <ul id="pager">
         {% if nowBigPage !=  1 %}
-            <li><a href="/board/list/{{nowBigPage | sub:jumpPage">◀</a></li>
+            <li><a href="/board/list/{{ nowBigPage | sub:jumpPage }}">◀</a></li>
         {% endif %}
 
         {% for i in pageList%}
@@ -67,16 +63,19 @@
                     <li ><a href="/board/list/{{ i }}">{{ i }}</a></li>
                 {% endif %}
 
-                {% if i == pager %}
-                    <li><a href="/board/list/{{ nowBigPage | add:jumpPage }}">▶</a></li>
-                {% endif %}
             {% endif %}
         {% endfor %}
+
+         {% if last_page < pager %}
+             <li><a href="/board/list/{{ nowBigPage | add:jumpPage }}">▶</a></li>
+         {% endif %}
        </ul>
     </div>
 
     <div class="bottom">
+        {% if "authUser" in request.session %}
         <a href="/board/writeform" id="new-book">글쓰기</a>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

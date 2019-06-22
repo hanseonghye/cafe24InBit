@@ -3,53 +3,6 @@
 
 {% block csslink %}
 <link href="/assets/css/board.css" rel="stylesheet" type="text/css">
-<script src="/assets/js/jquery/jquery-1.9.0.js"></script>
-<script>
-
-    $(function(){
-        var jumpPage = {{ jumppage }}
-        var nowPage = {{ nowPage }} -1
-        var countPage = {{ countPage }}
-        var pager = {{ pager }}
-
-        var nowBigPage = {{ nowBigPage }}
-
-        if ( nowBigPage != 1){
-            $('#pager').append('<li><a href="/board/search/'+(nowBigPage -jumpPage)+'">◀</a></li>')
-        }
-
-        var isendPage = false
-
-        if ( nowBigPage >= pager){
-            isendPage = true
-        }
-        else{
-        for (var i = nowBigPage; i<= (nowBigPage -1 + jumpPage); ++i){
-            var str =""
-            if ( i== (nowPage +1 )){
-                str = '<li class="selected" id="pager-'+i+'"><a href="/board/search/'+i+'">'+i+"</a></li>"
-            }else{
-                str ='<li id="pager-'+i+'"><a href="/board/search/'+i+'">'+i+"</a></li>"
-            }
-
-            $('#pager').append(str)
-            if (i ==pager){
-                isendPage =true
-                break;
-            }
-        } //end forloop
-        }
-
-        if (isendPage == false){
-            $('#pager').append('<li><a href="/board/search/'+(nowBigPage+jumpPage)+'">▶</a></li>')
-        }
-
-    })
-
-
-
-
-</script>
 {% endblock %}
 
 {% block content %}
@@ -70,7 +23,7 @@
         {% for board in search_list %}
         <tr>
             <td>{{ board.id}}</td>
-            <td>{{ board.title}}</td>
+            <td><a  href="/board/view/{{ board.id }}">{{ board.title}}</a></td>
             <td>{{ board.user.name}}</td>
             <td>{{ board.hit}}</td>
             <td>{{ board.regdate | date:'Y-m-d H:i:s'}}</td>
@@ -80,7 +33,27 @@
 
     <!-- pager 추가 -->
     <div class="pager">
-        <ul id="pager"></ul>
+        <ul id="pager">
+            {% if nowBigPage != 1 %}
+            <li><a href="/board/search/{{ nowBigPage | sub:jumpPage }}?kwd={{kwd}}">◀</a></li>
+            {% endif %}
+
+            {% for i in pageList%}
+            {% if i > pager %}
+            {% else %}
+            {% if i == nowPage %}
+            <li class="selected"><a href="/board/search/{{ i }}?kwd={{kwd}}">{{ i }}</a></li>
+            {% else %}
+            <li><a href="/board/search/{{ i }}?kwd={{kwd}}">{{ i }}</a></li>
+            {% endif %}
+
+            {% endif %}
+            {% endfor %}
+
+            {% if last_page < pager %}
+            <li><a href="/board/search/{{ nowBigPage | add:jumpPage }}?kwd={{kwd}}">▶</a></li>
+            {% endif %}
+        </ul>
     </div>
 
     <div class="bottom">

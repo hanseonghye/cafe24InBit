@@ -8,6 +8,7 @@
         $('#email').change(function(){
              $('#btn-email').show()
              $('#img-email').hide()
+             $('#btn-join').hide()
         })
 
         $('#btn-email').click(function(){
@@ -33,6 +34,7 @@
                     }else {
                         $('#btn-email').hide()
                         $('#img-email').show()
+                        $('#btn-join').show()
                     }
                 }
            })
@@ -46,15 +48,15 @@
 <div id="user">
     <form id="join-form" name="joinForm" method="post" action="/user/join">{% csrf_token %}
         <label class="block-label" for="name">이름</label>
-        <input id="name" name="name" type="text" value="">
+        <input id="name" name="name" type="text" value="" required>
 
         <label class="block-label" for="email">이메일</label>
-        <input id="email" name="email" type="text" value="">
+        <input id="email" name="email" type="text" value="" required>
         <input type="button" id="btn-email" value="이메일체크">
         <img id="img-email" src="/assets/images/check_icon.png" style="display:none; width:15px; height:auto;"/>
 
         <label class="block-label">패스워드</label>
-        <input name="password" type="password" value="">
+        <input name="password" type="password" value="" required>
 
         <fieldset>
             <legend>성별</legend>
@@ -64,11 +66,11 @@
 
         <fieldset>
             <legend>약관동의</legend>
-            <input id="agree-prov" type="checkbox" name="agreeProv" value="y">
+            <input id="agree-prov" type="checkbox" name="agreeProv" value="y" required>
             <label>서비스 약관에 동의합니다.</label>
         </fieldset>
 
-        <input type="submit" value="가입하기">
+        <input style="display:none" type="submit" id="btn-join" value="가입하기">
 
     </form>
 </div>
