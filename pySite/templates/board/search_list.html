@@ -12,19 +12,24 @@
         var countPage = {{ countPage }}
         var pager = {{ pager }}
 
-        var nowBigPage = (parseInt(nowPage/3))*3 +1;
+        var nowBigPage = {{ nowBigPage }}
+
         if ( nowBigPage != 1){
-            $('#pager').append('<li><a href=/board/list/'+(nowBigPage -jumpPage)+'">◀</a></li>')
+            $('#pager').append('<li><a href="/board/search/'+(nowBigPage -jumpPage)+'">◀</a></li>')
         }
 
-        var isEndPage = false
+        var isendPage = false
 
+        if ( nowBigPage >= pager){
+            isendPage = true
+        }
+        else{
         for (var i = nowBigPage; i<= (nowBigPage -1 + jumpPage); ++i){
             var str =""
             if ( i== (nowPage +1 )){
-                str = '<li class="selected" id="pager-'+i+'"><a href="/board/list/'+i+'">'+i+"</a></li>"
+                str = '<li class="selected" id="pager-'+i+'"><a href="/board/search/'+i+'">'+i+"</a></li>"
             }else{
-                str ='<li id="pager-'+i+'"><a href="/board/list/'+i+'">'+i+"</a></li>"
+                str ='<li id="pager-'+i+'"><a href="/board/search/'+i+'">'+i+"</a></li>"
             }
 
             $('#pager').append(str)
@@ -33,12 +38,14 @@
                 break;
             }
         } //end forloop
+        }
 
-        if (isEndPage == false){
-            $('#pager').append('<li><a href="/board/list/'+(nowBigPage+jumpPage)+'">▶</a></li>')
+        if (isendPage == false){
+            $('#pager').append('<li><a href="/board/search/'+(nowBigPage+jumpPage)+'">▶</a></li>')
         }
 
     })
+
 
 
 
@@ -47,8 +54,8 @@
 
 {% block content %}
 <div id="board">
-    <form id="search_form" action="" method="post">
-        <input type="text" id="kwd" name="kwd" value="">
+    <form id="search_form" action="/board/search" method="post">{% csrf_token %}
+        <input type="text" id="kwd" name="kwd" value="{{ kwd }}">
         <input type="submit" value="찾기">
     </form>
     <table class="tbl-ex">
@@ -60,17 +67,13 @@
             <th>작성일</th>
             <th>&nbsp;</th>
         </tr>
-
-        {% for board in board_list %}
+        {% for board in search_list %}
         <tr>
-            {% if board.status %}
-                <td>{{ board.id }}</td>
-                <td style="text-align: left;"><a href="/board/view/{{ board.id }}">{{ board.title }}</a></td>
-                <td>{{ board.user.name }}</td>
-                <td>{{ board.hit }}</td>
-                <td>{{ board.regdate | date:'Y-m-d H:i:s'}}</td>
-                <td><a href="/board/delete/{{ board.id }}" class="del">삭제</a></td>
-            {% endif %}
+            <td>{{ board.id}}</td>
+            <td>{{ board.title}}</td>
+            <td>{{ board.user.name}}</td>
+            <td>{{ board.hit}}</td>
+            <td>{{ board.regdate | date:'Y-m-d H:i:s'}}</td>
         </tr>
         {% endfor %}
     </table>

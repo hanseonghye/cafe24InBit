@@ -6,7 +6,7 @@ from board.models import Board
 from user.models import User
 
 totalCount = 0
-countPage = 5
+countPage = 3
 jumpPage = 2
 listnumber = 0
 
@@ -24,35 +24,46 @@ def getListNumber(totalcount):
         return int(totalcount / countPage) + 1
 
 
-def getHowManyBoardGet(no):
+def getHowManyBoardGet(no, totalCount):
     if no * countPage > totalCount:
         return totalCount - (no - 1) * countPage
 
     return countPage
 
 
-def search(request, kwd):
-    search_list = Board.objects.filter(body_text__search=kwd)
+def search(request, no=1):
+    kwd = request.POST["kwd"]
+    countTop = (no - 1) * countPage
+    search_list = Board.objects.filter(title__icontains=kwd, content__icontains=kwd, status=True).order_by('-groupno',
+                                                                                                           'orderno')
+    count = getHowManyBoardGet(no, len(search_list))
+    now_big_page = (int((1 - 1) / jumpPage)) * jumpPage + 1
     data = {
-        "search_list": search_list,
+        "kwd": kwd,
+        "search_list": search_list[countTop:countTop + count],
+        "nowPage": 1,
         "countPage": countPage,
         "pager": getListNumber(len(search_list)),
-        "jumppage": jumpPage
+        "jumppage": jumpPage,
+        "nowBigPage": now_big_page
     }
     return render(request, "board/search_list.html", data)
 
 
 def index(request, no=1):
     countTop = (no - 1) * countPage
-    count = getHowManyBoardGet(no)
+    count = getHowManyBoardGet(no, totalCount)
     board_list = Board.objects.all().order_by('-groupno', 'orderno')[countTop:countTop + count]
+    now_big_page = (int((no - 1) / (jumpPage))) * (jumpPage) + 1
 
     data = {
         "board_list": board_list,
         "nowPage": no,
         "countPage": countPage,
         "pager": listnumber,
-        "jumppage": jumpPage
+        "jumppage": jumpPage,
+        "nowBigPage": now_big_page,
+        "pageList": range(now_big_page, now_big_page + jumpPage)
     }
 
     return render(request, "board/list.html", data)
