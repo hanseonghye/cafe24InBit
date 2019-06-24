@@ -204,6 +204,7 @@ def writereply(request, id):
         global totalCount, listnumber
         totalCount += 1
         listnumber = getListNumber(totalCount)
+        return HttpResponseRedirect(f'/board/view/{board.pk}')
     except ObjectDoesNotExist:
         pass
-    return HttpResponseRedirect(f'/board/view/{board.pk}')
+    return HttpResponseRedirect('/board')

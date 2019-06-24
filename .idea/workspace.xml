@@ -4,12 +4,7 @@
     <list default="true" id="80c081a0-a0ff-44fe-b598-91a56a47a1cf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../PycharmProjects/python_ch2.2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PycharmProjects/python_ch2.2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PycharmProjects/python_ex02/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PycharmProjects/python_ex02/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/board/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/board/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/board/modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board/modify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/board/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board/search_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/guestbook/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guestbook/list.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,25 +51,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/board/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="131" column="63" lean-forward="true" selection-start-line="131" selection-start-column="63" selection-end-line="131" selection-end-column="63" />
+            <state relative-caret-position="438">
+              <caret line="209" column="32" lean-forward="true" selection-start-line="209" selection-start-column="32" selection-end-line="209" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../PycharmProjects/pySite/venv/Lib/site-packages/django/http/response.py">
+        <entry file="file://$PROJECT_DIR$/pysite/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-353">
-              <caret line="157" column="47" selection-start-line="157" selection-start-column="40" selection-end-line="157" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-57" />
+            <state relative-caret-position="-399" />
           </provider>
         </entry>
       </file>
@@ -372,7 +358,6 @@
     <entry file="file://$PROJECT_DIR$/user/models.py" />
     <entry file="file://$PROJECT_DIR$/static/css/board.css" />
     <entry file="file://$PROJECT_DIR$/templates/user/joinsuccess.html" />
-    <entry file="file://$PROJECT_DIR$/pysite/urls.py" />
     <entry file="file://$PROJECT_DIR$/templates/base.html" />
     <entry file="file://$PROJECT_DIR$/templates/user/loginform.html" />
     <entry file="file://$PROJECT_DIR$/templates/user/joinform.html" />
@@ -443,10 +428,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pysite/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-399" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/board/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="131" column="63" lean-forward="true" selection-start-line="131" selection-start-column="63" selection-end-line="131" selection-end-column="63" />
+        <state relative-caret-position="438">
+          <caret line="209" column="32" lean-forward="true" selection-start-line="209" selection-start-column="32" selection-end-line="209" selection-end-column="32" />
         </state>
       </provider>
     </entry>
