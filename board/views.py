@@ -123,11 +123,18 @@ def write(request):
 
 
 def view(request, id):
-    board = Board.objects.get(id=id)
-    board.hit += 1
-    board.save()
-    data = {"board": board}
+    try:
+        board = Board.objects.get(id=id)
+        data = {"board": board}
+        if f'board-{id}' not in request.COOKIES:
+            board.hit += 1
+            board.save()
+            response = render(request, "board/view.html", data)
+            response.set_cookie(f'board-{id}', True, max_age=60 * 60)
+            return response
 
+    except ObjectDoesNotExist:
+        data = {}
     return render(request, "board/view.html", data)
 
 

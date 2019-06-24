@@ -39,15 +39,15 @@
             {% endif %}
 
             {% for i in pageList%}
-            {% if i > pager %}
-            {% else %}
-            {% if i == nowPage %}
-            <li class="selected"><a href="/board/search/{{ i }}?kwd={{kwd}}">{{ i }}</a></li>
-            {% else %}
-            <li><a href="/board/search/{{ i }}?kwd={{kwd}}">{{ i }}</a></li>
-            {% endif %}
+                {% if i > pager %}
+                {% else %}
+                    {% if i == nowPage %}
+                        <li class="selected"><a href="/board/search/{{ i }}?kwd={{kwd}}">{{ i }}</a></li>
+                    {% else %}
+                        <li><a href="/board/search/{{ i }}?kwd={{kwd}}">{{ i }}</a></li>
+                    {% endif %}
 
-            {% endif %}
+                {% endif %}
             {% endfor %}
 
             {% if last_page < pager %}

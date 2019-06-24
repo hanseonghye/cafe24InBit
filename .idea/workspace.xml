@@ -4,6 +4,12 @@
     <list default="true" id="80c081a0-a0ff-44fe-b598-91a56a47a1cf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../PycharmProjects/python_ch2.2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PycharmProjects/python_ch2.2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../PycharmProjects/python_ex02/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PycharmProjects/python_ex02/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/board/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/board/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/board/modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board/modify.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/board/search_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board/search_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/guestbook/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guestbook/list.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,11 +19,88 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/main/index.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pysite/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+            <state relative-caret-position="198">
+              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/board/list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-228" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/board/modify.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="23" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/board/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/board/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="131" column="63" lean-forward="true" selection-start-line="131" selection-start-column="63" selection-end-line="131" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../PycharmProjects/pySite/venv/Lib/site-packages/django/http/response.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-353">
+              <caret line="157" column="47" selection-start-line="157" selection-start-column="40" selection-end-line="157" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-57" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/board/search_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/board/view.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/guestbook/list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="608">
+              <caret line="32" column="49" lean-forward="true" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -28,15 +111,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>{%</find>
-      <find>?</find>
-      <find>objects.all().order_by</find>
-      <find>mathfilt</find>
       <find>jquery</find>
       <find>$(function()</find>
       <find>print</find>
@@ -59,17 +139,21 @@
       <find>delete</find>
       <find>modi</find>
       <find>authuser</find>
-      <find>request.session</find>
       <find>not in re</find>
       <find>&quot;auth</find>
       <find>jump</find>
+      <find>middleware_</find>
+      <find>hit</find>
+      <find>request.session</find>
+      <find>{{ board.content | linebreaksbr }}</find>
+      <find>max_age</find>
     </findStrings>
     <dirStrings>
       <dir>D:\hsh\git\PycharmProjects\pySite\static</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -88,29 +172,30 @@
         <option value="$PROJECT_DIR$/board/admin.py" />
         <option value="$PROJECT_DIR$/docs/board구현" />
         <option value="$USER_HOME$/AppData/Local/Temp/BNZ.5d0c6b341307421d/list.jsp" />
-        <option value="$PROJECT_DIR$/templates/board/modify.html" />
         <option value="$PROJECT_DIR$/static/css/board.css" />
         <option value="$PROJECT_DIR$/templates/board/write.html" />
-        <option value="$PROJECT_DIR$/pysite/settings.py" />
         <option value="$PROJECT_DIR$/templates/board/searchlist.html" />
         <option value="$PROJECT_DIR$/pysite/urls.py" />
         <option value="$PROJECT_DIR$/templates/board/view.html" />
         <option value="$PROJECT_DIR$/templates/user/joinsuccess.html" />
-        <option value="$PROJECT_DIR$/templates/guestbook/list.html" />
-        <option value="$PROJECT_DIR$/templates/board/search_list.html" />
         <option value="$PROJECT_DIR$/board/models.py" />
         <option value="$PROJECT_DIR$/templates/board/list.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/user/joinform.html" />
-        <option value="$PROJECT_DIR$/board/views.py" />
         <option value="$PROJECT_DIR$/templates/main/index.html" />
+        <option value="$PROJECT_DIR$/pysite/middle.py" />
+        <option value="$PROJECT_DIR$/pysite/settings.py" />
+        <option value="$PROJECT_DIR$/templates/guestbook/list.html" />
+        <option value="$PROJECT_DIR$/templates/board/search_list.html" />
+        <option value="$PROJECT_DIR$/templates/board/modify.html" />
+        <option value="$PROJECT_DIR$/board/views.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="635" />
-    <option name="y" value="144" />
-    <option name="width" value="1005" />
+    <option name="x" value="153" />
+    <option name="y" value="225" />
+    <option name="width" value="1381" />
     <option name="height" value="931" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -121,7 +206,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -132,7 +216,24 @@
             <path>
               <item name="pySite" type="b2602c69:ProjectViewProjectNode" />
               <item name="pySite" type="462c0819:PsiDirectoryNode" />
+              <item name="pysite" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pySite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pySite" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pySite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pySite" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="board" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pySite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pySite" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="guestbook" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pySite" type="b2602c69:ProjectViewProjectNode" />
@@ -140,10 +241,16 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="pySite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pySite" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -194,7 +301,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1130064" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.114072494" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -258,30 +365,88 @@
     <entry file="file://$PROJECT_DIR$/guestbook/models.py" />
     <entry file="file://$PROJECT_DIR$/user/admin.py" />
     <entry file="file://$PROJECT_DIR$/templates/user/updateform.html" />
-    <entry file="file://$PROJECT_DIR$/templates/board/modify.html" />
-    <entry file="file://$PROJECT_DIR$/user/views.py" />
     <entry file="file://$PROJECT_DIR$/docs/board구현" />
     <entry file="file://$PROJECT_DIR$/templates/board/write.html" />
     <entry file="file://$PROJECT_DIR$/docs/장고 설정.txt" />
     <entry file="file://$PROJECT_DIR$/guestbook/views.py" />
-    <entry file="file://$PROJECT_DIR$/pysite/settings.py" />
     <entry file="file://$PROJECT_DIR$/user/models.py" />
     <entry file="file://$PROJECT_DIR$/static/css/board.css" />
     <entry file="file://$PROJECT_DIR$/templates/user/joinsuccess.html" />
-    <entry file="file://$PROJECT_DIR$/templates/board/view.html" />
-    <entry file="file://$PROJECT_DIR$/templates/guestbook/list.html" />
     <entry file="file://$PROJECT_DIR$/pysite/urls.py" />
-    <entry file="file://$PROJECT_DIR$/templates/board/search_list.html" />
-    <entry file="file://$PROJECT_DIR$/board/models.py" />
-    <entry file="file://$PROJECT_DIR$/templates/board/list.html" />
     <entry file="file://$PROJECT_DIR$/templates/base.html" />
     <entry file="file://$PROJECT_DIR$/templates/user/loginform.html" />
     <entry file="file://$PROJECT_DIR$/templates/user/joinform.html" />
-    <entry file="file://$PROJECT_DIR$/board/views.py" />
+    <entry file="file://$PROJECT_DIR$/pysite/middle.py" />
     <entry file="file://$PROJECT_DIR$/templates/main/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pysite/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/board/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-228" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/guestbook/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="32" column="49" lean-forward="true" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/board/view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/board/modify.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="23" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/board/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/board/search_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-57" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../PycharmProjects/pySite/venv/Lib/site-packages/django/http/response.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-353">
+          <caret line="157" column="47" selection-start-line="157" selection-start-column="40" selection-end-line="157" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/board/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="131" column="63" lean-forward="true" selection-start-line="131" selection-start-column="63" selection-end-line="131" selection-end-column="63" />
         </state>
       </provider>
     </entry>

@@ -27,28 +27,9 @@
     <ul>
         {% for guestbook in guestbook_list %}
         <li>
-            {% if forloop.first %}
-            <table style="border-collapse: collapse; border:2px solid #666; background-color:#ddd">
-                <tr>
-                    {% comment 'for' '%}
-                    <td>[ {{ forloop.revcounter }} ]</td>
-                    {% endcomment %}
-                    <td>[ {{ forloop.revcounter }} ]</td>
-                    <td>{{ guestbook.name }}</td>
-                    <td>{{ guestbook.regdate | date:'Y-m-d H:i:s'}}</td>
-                    <td><a href="/guestbook/deleteform/{{ guestbook.id }}">삭제</a></td>
-                </tr>
-                <tr>
-                    <td colspan=4>
-                        {{ guestbook.content | linebreaksbr }}
-                    </td>
-                </tr>
-            </table>
-
-            {% else %}
             <table>
                 <tr>
-                    <td>[ {{ forloop.counter }} ]</td>
+                    <td>[ {{  forloop.revcounter }} ]</td>
                     <td>{{ guestbook.name }}</td>
                     <td>{{ guestbook.regdate | date:'Y-m-d H:i:s'}}</td>
                     <td><a href="/guestbook/deleteform/{{ guestbook.id }}">삭제</a></td>
@@ -59,8 +40,6 @@
                     </td>
                 </tr>
             </table>
-
-            {% endif %}
         </li>
         {% endfor %}
     </ul>
