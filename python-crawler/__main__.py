@@ -51,7 +51,7 @@ def crawling_pelicana():
 def crawling_nene():
     results = []
     pre_shop_name = ""
-    for page in count(1):
+    for page in range(1, 5):
         url = "https://nenechicken.com/17_new/sub_shop01.asp?IndexSword=&GUBUN=A&page=" + str(page)
 
         try:
@@ -150,6 +150,6 @@ def crawling_goobne():
 
 if __name__ == "__main__":
     # crawling_pelicana()
-    # crawling_nene()
+    crawling_nene()
     # crawling_kyochon()
-    crawling_goobne()
+    # crawling_goobne()
