@@ -1,3 +1,4 @@
+import os
 import ssl
 import sys
 import time
@@ -83,7 +84,9 @@ def crawling_nene():
 
     # store
     table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
-    table.to_csv('__results__/nene.csv', encoding="utf-8", mode="w", index=True)
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    # table.to_csv(f'{BASE_DIR}/__results__/nene.csv', encoding="utf-8", mode="w", index=True)
+    table.to_csv(f'/root/crawling-results/__results__/nene.csv', encoding="utf-8", mode="w", index=True)
 
 
 def crawling_kyochon():
@@ -114,7 +117,7 @@ def crawling_kyochon():
 
 def crawling_goobne():
     url = 'http://goobne.co.kr/store/search_store.jsp'
-    wd = webdriver.Chrome('D:\chromedriver.exe')
+    wd = webdriver.Chrome('chromedriver.exe')
     wd.get(url)
     time.sleep(5)
 
