@@ -9,9 +9,6 @@ def hello(request):
     return render(request, 'helloworld/hello.html')
 
 
-def hello(request, id=0):
-    return render(request, '')
-
 
 def hello2(request, id=0):
     return HttpResponse(f'id:{id}')
