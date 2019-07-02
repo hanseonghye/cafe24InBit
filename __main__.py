@@ -7,7 +7,7 @@ from urllib.request import Request, urlopen
 import datetime
 from collection.crawler import crawling
 from selenium import webdriver
-import pandas as pd
+# import pandas as pd
 from bs4 import BeautifulSoup
 
 
@@ -45,8 +45,8 @@ def crawling_pelicana():
             results.append((name, address) + tuple(sidogu))
 
     # store
-    table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
-    table.to_csv('__results__/pelicana.csv', encoding="utf-8", mode="w", index=True)
+    # table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
+    # table.to_csv('__results__/pelicana.csv', encoding="utf-8", mode="w", index=True)
 
 
 def crawling_nene():
@@ -83,10 +83,10 @@ def crawling_nene():
             results.append((name, address) + tuple(sidogu))
 
     # store
-    table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    # table.to_csv(f'{BASE_DIR}/__results__/nene.csv', encoding="utf-8", mode="w", index=True)
-    table.to_csv(f'/root/crawling-results/nene.csv', encoding="utf-8", mode="w", index=True)
+    # table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
+    # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    # # table.to_csv(f'{BASE_DIR}/__results__/nene.csv', encoding="utf-8", mode="w", index=True)
+    # table.to_csv(f'/root/crawling-results/nene.csv', encoding="utf-8", mode="w", index=True)
 
 
 def crawling_kyochon():
@@ -110,9 +110,9 @@ def crawling_kyochon():
                 results.append((name, address) + tuple(sidogu))
 
     # store
-    table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
-    table.to_csv('__results__/kyochon.csv', encoding="utf-8", mode="w", index=True)
-    print("======end==========")
+    # table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
+    # table.to_csv('__results__/kyochon.csv', encoding="utf-8", mode="w", index=True)
+    # print("======end==========")
 
 
 def crawling_goobne():
@@ -147,8 +147,8 @@ def crawling_goobne():
 
     wd.quit()
     # store
-    table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
-    table.to_csv('__results__/goobne.csv', encoding="utf-8", mode="w", index=True)
+    # table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
+    # table.to_csv('__results__/goobne.csv', encoding="utf-8", mode="w", index=True)
 
 
 if __name__ == "__main__":
