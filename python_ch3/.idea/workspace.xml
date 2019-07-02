@@ -7,7 +7,6 @@
       <change beforePath="$PROJECT_DIR$/../python-crawler/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python-crawler/__main__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python-pgsql/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../python-pgsql/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python_ch2.2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../python_ch2.2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_ch3/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_ch3/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python_ex02/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../python_ex02/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,14 +37,23 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/python_ch3/urls.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+                <state relative-caret-position="216">
+                  <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
                   <folding>
                     <element signature="e#634#666#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/requirements.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
                 </state>
               </provider>
             </entry>
@@ -133,13 +141,14 @@
         <option value="$PROJECT_DIR$/emaillist/views.py" />
         <option value="$PROJECT_DIR$/helloworld/counter.py" />
         <option value="$PROJECT_DIR$/helloworld/models.py" />
-        <option value="$PROJECT_DIR$/python_ch3/urls.py" />
         <option value="$PROJECT_DIR$/python_ch3/settings.py" />
         <option value="$PROJECT_DIR$/helloworld/views.py" />
+        <option value="$PROJECT_DIR$/python_ch3/urls.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="525" />
     <option name="y" value="82" />
     <option name="width" value="1005" />
@@ -159,11 +168,6 @@
           <expand>
             <path>
               <item name="python_ch3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="python_ch3" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="python_ch3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="python_ch3" type="462c0819:PsiDirectoryNode" />
               <item name="python_ch3" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -328,20 +332,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_ch3/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
-          <folding>
-            <element signature="e#634#666#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/장고 설정.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="100" column="16" lean-forward="true" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
+        <state relative-caret-position="1729">
+          <caret line="91" column="34" selection-start-line="91" selection-start-column="7" selection-end-line="91" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -349,6 +343,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_ch3/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding>
+            <element signature="e#634#666#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
