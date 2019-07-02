@@ -89,6 +89,7 @@ def crawling_nene():
     # table.to_csv(f'/root/crawling-results/nene.csv', encoding="utf-8", mode="w", index=True)
 
 
+
 def crawling_kyochon():
     results = []
     for sido1 in range(1, 2):
