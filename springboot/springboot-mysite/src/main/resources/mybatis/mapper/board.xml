@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+	<insert id="contentinsert" parameterType="boardvo">
+		<![CDATA[
+			insert 
+				into board
+			values(null, #{content}, 0, now(), #{title}, #{user_no}, (SELECT IFNULL(MAX(group_no) + 1, 1) FROM board b), 1, 0,'LIVE')
+		
+		]]>
+	</insert>
+
+	<insert id="insertReply" parameterType="boardvo">
+		<![CDATA[
+			insert
+				into board
+				values(null,#{content},0,now(),#{title},#{user_no},
+						(SELECT b.group_no FROM board b WHERE b.no =#{parent_no}),
+						(SELECT b.order_no+1 FROM board b WHERE b.no =#{parent_no}),
+						(SELECT b.depth+1 FROM board b WHERE b.no =#{parent_no})
+					)
+		]]>
+
+		<selectKey keyProperty="no" resultType="long" order="AFTER">
+			<![CDATA[
+				select last_insert_id()
+			]]>
+		</selectKey>
+
+	</insert>
+
+	<update id="updateByReplyAdd" parameterType="long">
+		<![CDATA[		
+			update board a, board b
+				set b.order_no = b.order_no+1
+				where a.no=#{no} 
+					and b.group_no = a.group_no
+					and b.no != a.no
+					and b.order_no >= a.order_no 
+		]]>
+	</update>
+
+	
+	<select id="getlist" resultType="boardvo" parameterType="map">
+		<![CDATA[
+			select b.no, b.title,b.user_no, u.name, b.hit, b.reg_date, b.group_no, b.order_no, b.depth, b.status
+			from board b, user u
+			where ( b.user_no=u.no )
+			order by b.group_no desc, b.order_no asc
+			limit #{counttop}, #{count}
+		]]>
+	</select>
+	
+	<select id="getTotalSearchCount" resultType="long" parameterType="string">
+		select count(*)
+				from board b, user u
+				where ( b.title like CONCAT('%', #{kwd}, '%')
+						or b.content like CONCAT('%', #{kwd}, '%')
+					) and (b.user_no = u.no ) and (status = 'LIVE')
+	</select>
+
+	<select id="getsearch" resultType="boardvo" parameterType="map">
+		<![CDATA[
+			select b.no, b.title, u.name, b.hit, b.reg_date, b.group_no, b.order_no, b.depth, b.status
+			from board b, user u
+			where ( b.title like CONCAT('%', #{kwd}, '%')
+					or b.content like CONCAT('%', #{kwd}, '%')
+				) and (b.user_no = u.no ) and (status = 'LIVE')
+			order by b.group_no desc, b.order_no asc
+		]]>
+	</select>
+
+	<select id="getBoardCount" resultType="long">
+		<![CDATA[
+			select count(*)
+			from board
+		]]>
+
+	</select>
+
+	<select id="getByNo" resultType="boardvo" parameterType="long">
+		<![CDATA[
+			select b.no, b.title, b.content,b.user_no, u.name, b.hit, b.reg_date, b.group_no, b.order_no, b.status
+			from board b, user u
+			where b.no=#{no}
+				and b.user_no = u.no
+				
+		]]>
+	</select>
+
+	<update id="update" parameterType="boardvo">
+		<![CDATA[
+			update board
+				set title=#{title}, content=#{content}
+			where no=#{no}
+		]]>
+	</update>
+
+	<update id="updateBydelete" parameterType="long">
+		<![CDATA[
+			update board
+				set title="삭제된 글입니다", content="글쓴이에 의해 삭제됐습니다", status='DIE'
+			where no=#{no}
+		]]>
+	</update>
+
+	<update id="updateHit" parameterType="long">
+		<![CDATA[
+			update board
+				set hit=hit+1
+			where no=#{no}
+		]]>
+	</update>
+</mapper>
