@@ -1,0 +1,133 @@
+- 기본적으로 장고 프로젝트 한 개당 한 개의 db를 사용
+- 장고 프로젝트에는 기본적으로 관리 프로그램이 내장되기 때문에
+
+- postgresql에 db 생성 및 계정 생성 접근 권한 부여
+1. create database djdb
+2. create user djdb with password 'djdb';
+3. grant all privileges on all tables in schema public to djdb;
+4. data/pg_hba.conf 접근 설정
+
+
+- 파이참에서 django 프로젝트 시작하기
+
+1. 파이참 프로젝트 생성 (python_ch3 프로젝트)
+
+2. django 설치
+    [터미널]
+    pip install django
+
+3. 장고 프로젝트 생성
+    [터미널]
+    django-admin startproject python_ch3
+
+4. 디렉터리 정리
+    [터미널]
+    파이참 프로젝트랑 장고 프로젝트 디렉터리 일치 시키는 작업
+
+5. psycopg2 설치 --> db
+    [터미널]
+    pip install psycopg2
+
+6. settings.py 설정
+    1) TIME_ZONE = 'Asia/Seoul'
+    2) DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': 'djdb',
+                'USER': 'djdb',
+                'PASSWORD': 'djdb',
+                'HOST': '192.168.1.45',
+                'PORT': '5432'
+            }
+        }
+
+
+
+7. 장고 프로젝트의 기본 관리 어플리케이션이 사용하는 테이블 생성
+    [터미널]
+    python manage.py migrate
+
+8. 장고 프로젝트의 기본 관리 어플리케이션 로그인 계정 생성하기
+    (관리 계정 생성하기)
+    [터미널]
+    python manage.py createsuperuser
+    //hans 201524617
+
+
+9. templates 디렉터리 설정
+    (settings.py)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+            ...
+]
+
+
+10. 지금까지 작업 내용 확인하기
+    [터미널]
+    python manage.py runserver 0.0.0.0:8888
+
+
+- 어플리케이션 추가하기
+** helloworld
+    1. python manage.py startapp helloworld
+
+    2. 어플리케이션 등록
+        (settings.py)
+        INSTALLED_APPS = [
+                ...
+            'helloworld'
+        ]
+    3. 어플리케이션 template 디렉터리 생성
+        template
+            |---- helloworld
+
+    4. model 정의
+    5. urls.py에서 url-view의 handler 매핑
+    6. views.py에서 핸들러 함수 추가 구현(요청 처리, 모델 작업, 응답 처리)
+    7. 화면이 필요한 경우, 해당 template 작업
+
+** emaillist
+    1. python manage.py startapp emaillist
+
+    2. 어플리케이션 등록
+        (settings.py)
+        INSTALLED_APPS = [
+                ...
+            'emaillist'
+        ]
+    3-1 어플리케이션 template 디렉터리 생성
+        template
+            |---- emaillist
+    3-2  static(css,img,js) 디렉터리 설정및 매핑
+
+    4-1. model 정의
+    4-2. admin.py에 register , 어드민 페이지에 model을 정의함. 안해도 갠춘
+    4-3. migrations 이름의 DDL python 모듈을 생성
+        python manage.py makemigrations
+    4-4. 물리 db와 스키마 동기화 작업을 한다.
+        python manage.py migrate
+
+    5. urls.py에서 url-view의 handler 매핑
+    6. views.py에서 핸들러 함수 추가 구현(요청 처리, 모델 작업, 응답 처리)
+    7. 화면이 필요한 경우, 해당 template 작업
+
+
+
+1. model
+2. /guestbook/deleteform/10 <--id
+    path('guestbook/deleteform/<int:id>')
+3. orm method
+    index(list) -> ok
+    add -> ok
+    delete
+        1. repository 에서 객체를 영속화 --> 객체를 db하고 연결시키는 거 인듯??
+            guestbook = Guestbook.objects.filter(id=20).filter(password=1234)
+            guestbook.delete()
+
+구현 x
+list.html 에서
+1. 메시지 index 접는것 하지 말것? -> django template arithmetic operation
+2. 메세지 개행 문자 <br> replace하지 말 것 -> django template
+3.

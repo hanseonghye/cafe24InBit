@@ -1,0 +1,63 @@
+{% extends '../base.html' %}
+{% load mathfilters %}
+
+{% block csslink %}
+<link href="/assets/css/board.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div id="board">
+    <form id="search_form" action="/board/search" method="post">{% csrf_token %}
+        <input type="text" id="kwd" name="kwd" value="{{ kwd }}">
+        <input type="submit" value="찾기">
+    </form>
+    <table class="tbl-ex">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            <th>조회수</th>
+            <th>작성일</th>
+            <th>&nbsp;</th>
+        </tr>
+        {% for board in search_list %}
+        <tr>
+            <td>{{ board.id}}</td>
+            <td><a  href="/board/view/{{ board.id }}">{{ board.title}}</a></td>
+            <td>{{ board.user.name}}</td>
+            <td>{{ board.hit}}</td>
+            <td>{{ board.regdate | date:'Y-m-d H:i:s'}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- pager 추가 -->
+    <div class="pager">
+        <ul id="pager">
+            {% if nowBigPage != 1 %}
+            <li><a href="/board/search/{{ nowBigPage | sub:jumpPage }}?kwd={{kwd}}">◀</a></li>
+            {% endif %}
+
+            {% for i in pageList%}
+                {% if i > pager %}
+                {% else %}
+                    {% if i == nowPage %}
+                        <li class="selected"><a href="/board/search/{{ i }}?kwd={{kwd}}">{{ i }}</a></li>
+                    {% else %}
+                        <li><a href="/board/search/{{ i }}?kwd={{kwd}}">{{ i }}</a></li>
+                    {% endif %}
+
+                {% endif %}
+            {% endfor %}
+
+            {% if last_page < pager %}
+            <li><a href="/board/search/{{ nowBigPage | add:jumpPage }}?kwd={{kwd}}">▶</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="bottom">
+        <a href="/board/writeform" id="new-book">글쓰기</a>
+    </div>
+</div>
+{% endblock %}
