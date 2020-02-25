@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+	<insert id="insert" parameterType="uservo">
+		<![CDATA[
+			insert 
+				into member
+			values(null, now(), #{name}, #{email}, #{password}, #{gender})
+		
+		]]>
+		<selectKey keyProperty="no" resultType="long" order="AFTER">
+			<![CDATA[
+				select last_insert_id()
+			]]>
+		</selectKey>
+	</insert>
+
+	<select id="getByEmailAndPassword" resultType="uservo" parameterType="map">
+		<![CDATA[
+			select no, name, email from member where email=#{email} and password=#{password}
+		]]>
+	</select>
+	
+	<select id="getByEmail" resultType="uservo" parameterType="string">
+		<![CDATA[
+			select no,name,email from member where email=#{email}
+		]]>
+	</select>
+	
+	<!-- 하나만 있을때는 변수명을(여기서는value) 아무거나 해도된다 -->
+<!-- 	<select id="getByNo" resultType="userVo" parameterType="Long">
+		<![CDATA[
+			select no, name from user where no=#{value} 
+		]]>
+	</select> -->
+	
+	<update id="update" parameterType="uservo" >
+		<![CDATA[
+			update member
+				set name =#{name}, password =#{password}, email=#{email}, gender=#{gender} where no=#{no}
+		]]>
+	</update>
+</mapper>
