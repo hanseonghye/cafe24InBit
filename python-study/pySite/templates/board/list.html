@@ -1,0 +1,81 @@
+{% extends '../base.html' %}
+{% load mathfilters %}
+
+{% block csslink %}
+<link href="/assets/css/board.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div id="board">
+    <form id="search_form" action="/board/search" method="post">{% csrf_token %}
+        <input type="text" id="kwd" name="kwd" value="">
+        <input type="submit" value="찾기">
+    </form>
+    <table class="tbl-ex">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            <th>조회수</th>
+            <th>작성일</th>
+            <th>&nbsp;</th>
+        </tr>
+
+        {% for board in board_list %}
+        <tr>
+            {% if board.status %}
+                <td>{{ board.id }}</td>
+                {% if board.depth == 0 %}
+                    <td style="text-align: left;"><a href="/board/view/{{ board.id }}">{{ board.title }}</a></td>
+                {% else %}
+                    <td style="text-align: left; padding-left:{{board.depth | mul:20}}px"><img src="/assets/images/reply.png"><a
+                        href="/board/view/{{ board.id }}">{{ board.title }}</a></td>
+                {% endif %}
+                <td>{{ board.user.name }}</td>
+                <td>{{ board.hit }}</td>
+                <td>{{ board.regdate | date:'Y-m-d H:i:s'}}</td>
+
+            {% else %}
+                <td></td>
+                <td>삭제된 글입니다.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- pager 추가 -->
+    <div class="pager">
+         <ul id="pager">
+        {% if nowBigPage !=  1 %}
+            <li><a href="/board/list/{{ nowBigPage | sub:jumpPage }}">◀</a></li>
+        {% endif %}
+
+        {% for i in pageList%}
+            {% if i > pager %}
+            {% else %}
+                {% if i == nowPage %}
+                    <li class="selected"><a href="/board/list/{{ i }}">{{ i }}</a></li>
+                {% else %}
+                    <li ><a href="/board/list/{{ i }}">{{ i }}</a></li>
+                {% endif %}
+
+            {% endif %}
+        {% endfor %}
+
+         {% if last_page < pager %}
+             <li><a href="/board/list/{{ nowBigPage | add:jumpPage }}">▶</a></li>
+         {% endif %}
+       </ul>
+    </div>
+
+    <div class="bottom">
+        {% if "authUser" in request.session %}
+        <a href="/board/writeform" id="new-book">글쓰기</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
